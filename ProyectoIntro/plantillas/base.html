@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>
+    
+      {% block title %} {% endblock %}
+    
+    </title>
+  </head>
+  <body>
+    {% include "superior/barra.html" %}
+    <h1 style="background-color: darkolivegreen; color: white; text-align:center"> PSE </h1>
+    
+    <h3> Programa de Supervicion adcademica Especial</h3>
+    
+    {% block content %}
+    
+    
+    {% endblock %}
+    
+    <p style="background-color: darkolivegreen ;text-align: right"> Gracias por su visita </p>
+  </body>
+</html>
