@@ -5,4 +5,5 @@ from gestion.models import *
 
 admin.site.register(Profesores)
 admin.site.register(Estudiantes)
+#esto ya no esta
 
