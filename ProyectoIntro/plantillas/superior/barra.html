@@ -1,28 +1,31 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
     <title></title>
   </head>
-  
+
   <style>
     #barra {
       margin: 0;
-      padding: 0;
+      padding: 20px 0;
       list-style: none;
       text-transform: uppercase;
-      background-color: #FF5733;
+      background-color: #E66161;
     }
-    
+
     #barra li{
+      color: white;
       display: inline;
-      margin: 0 20px;
-      color: #FFFFFF;
-    }
+
+      margin: 30px 20px;
+
   </style>
-  
+
   <body>
     <ul id="barra">
+      <li> <img src="{% static "images/logo.png" %}" alt="Hi!" height="40" width="60" /> </li>
       <li>Home</li>
       <li>Servicios</li>
       <li>Quienes somos</li>
