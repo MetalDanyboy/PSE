@@ -45,6 +45,7 @@ def calculaEdad(request,edad,anno):
 
     documento="<html><body> <h2> en el año %s tendrás %s años</h2></body></html>" %(anno,edadFutura)
     return HttpResponse(documento)
+
 def PSE(request):
     ahora=datetime.now()
     return render(request, "PSE.html",{"dameFecha":ahora})
