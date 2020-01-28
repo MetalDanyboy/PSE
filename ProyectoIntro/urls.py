@@ -19,7 +19,5 @@ from ProyectoIntro.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('saludo/',saludo),path('adios/',despedida),
-    path("edades/<int:edad>/<int:anno>",calculaEdad),
     path("PSE/",PSE)
 ]

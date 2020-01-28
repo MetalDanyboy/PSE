@@ -8,19 +8,16 @@
     <title>
       {% block title %} {% endblock %}
     </title>
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
   </head>
   <body>
+    {% include "superior/Encabezado.html" %}
     {% include "superior/barra.html" %}
-    <h1 style="background-color: #5DCC06; color: white; text-align:center"> PSE </h1>
-
-    <h3> Programa de Supervicion Academica Especial</h3>
-
+    
     {% block content %}
 
 
     {% endblock %}
 
-    <p style="background-color: #5DCC06; color: white ;text-align: right"> Gracias por su visita </p>
   </body>
 </html>

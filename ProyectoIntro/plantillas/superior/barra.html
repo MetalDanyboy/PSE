@@ -1,3 +1,4 @@
+
 {% load static %}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -8,29 +9,32 @@
 
   <style>
     #barra {
-      margin: 0;
-      padding: 20px 0;
+      padding: 15px 0;
       list-style: none;
-      text-transform: uppercase;
-      background-color: #E66161;
+      background-color: #89a4f7;
+      border-radius: 7px;
+      border-top-style: none;
+      border-right-style: outset;
+      border-bottom-style: outset;
+      border-left-style: none;
+      border-width: 1.5px;
+      border-color:  lightskyblue;
     }
 
     #barra li{
       color: white;
       display: inline;
-
       margin: 30px 20px;
-
+    }
   </style>
 
   <body>
     <ul id="barra">
-      <li> <img src="{% static "images/logo.png" %}" alt="Hi!" height="40" width="60" /> </li>
-      <li>Home</li>
-      <li>Servicios</li>
-      <li>Quienes somos</li>
-      <li>Contacto</li>
-      <li>Acerca de</li>
+      <li>Menu</li>
+      
     </ul>
   </body>
 </html>
+
+
+

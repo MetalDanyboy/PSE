@@ -1,4 +1,7 @@
 body {
-  color: grey;
-  background-color: white;
+  color: red;
+  background-image: linear-gradient(red, yellow);
+}
+h1 {
+  color: blue;
 }

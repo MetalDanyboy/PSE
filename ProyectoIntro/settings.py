@@ -55,7 +55,7 @@ ROOT_URLCONF = 'ProyectoIntro.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ["C:/Users/Familia/Documents/ProyectoDjango/ProyectoIntro/PSE/ProyectoIntro/plantillas"],
+        'DIRS': ["C:/Users/Familia/Documents/GitHub/PSE/ProyectoIntro/plantillas"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -119,5 +119,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-#STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static')
-STATICFILES_DIRS=("C:/Users/Familia/Documents/ProyectoDjango/ProyectoIntro/PSE/ProyectoIntro/static",)
+
+STATICFILES_DIRS=("C:/Users/Familia/Documents/GitHub/PSE/ProyectoIntro/static",)
