@@ -19,5 +19,5 @@ from ProyectoIntro.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("PSE/",PSE)
+    path("profesores/",PSE_profesores)
 ]

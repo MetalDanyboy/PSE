@@ -6,23 +6,29 @@
     <title></title>
   </head>
 
-  <style>
-    #encabezado {
-      list-style: none;
-      text-transform: uppercase;
-      background-color: transparent;
-    }
-
-    #encabezado li{
-      color: red;
-      display: inline;
-      padding-right: 40px;
-    }
-  </style>
-
   <body>
-    
+      <div class="row">
+        <div class="col-md-auto ml-5">
+          <img src="{% static 'images/logo_usm.png' %}"  height="90" width="120"/> 
+        </div>
+        <div class="col-md-auto my-auto">
+           <div id="al_lado_del_logo">
+            <p class="font-weight-bold">
+              UNIVERSIDAD SANTA MARÍA
+            </p>
+            <p class="font-weight-bold">
+              AÑO 2020
+            </p>
+          </div>
+        </div>
+        <div class="col-md-auto my-auto ml-auto">
+          <p class="font-weight-bold">
+            JUAN PÉREZ
+          </p>
+        </div>      
+        <div class="col-md-auto mr-5 my-auto">
+          <img src="{% static 'images/usuario.png' %}"  height="70" width="80"/>
+        </div>
+      </div>
   </body>
 </html>
-
-
