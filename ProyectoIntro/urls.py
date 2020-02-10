@@ -18,6 +18,8 @@ from django.urls import path
 from ProyectoIntro.views import *
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path("profesores/",PSE_profesores)
+    path('admin/', admin.site.urls, name = "admin"),
+    path('profesores/',PSE_profesores, name = "profesores"),
+    path('', PSE_login, name = "login"),
+    path('forgotpassword/', PSE_forgotpassword, name = "forgotpassword")
 ]
