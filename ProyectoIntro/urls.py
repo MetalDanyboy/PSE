@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls, name = "admin"),
     path('profesores/',PSE_profesores, name = "profesores"),
     path('', PSE_login, name = "login"),
-    path('forgotpassword/', PSE_forgotpassword, name = "forgotpassword")
+    path('forgotpassword/', PSE_forgotpassword, name = "forgotpassword"),
+    path('profesores/cursos/', PSE_profesores_cursos_1, name = "cursos_1")
 ]
