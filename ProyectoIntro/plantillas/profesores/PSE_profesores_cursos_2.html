@@ -11,17 +11,19 @@
       		Probando la tabla
     	</title>
 
-      <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+      <link rel="stylesheet" href="{% static 'css/prueba_tabla.css' %}">
 
 	</head>
 
 	<body>
-    <table class="table table-sm table-hover mr-4">
+	
+		<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">		
+    <table id="myTable" class="table table-striped table-sm" cellspacing="0" width="100%" >
       <thead>
-        <th>
-          <td>Nombre</td>
-          <td>Apellido</td>
-        </th>
+      		<th class="th-sm">Id</th>
+          <th class="th-sm">Nombre</th>
+          <th class="th-sm">Apellido</th>
+        	
       </thead>
       <tbody>
         <tr style="transform: rotate(0);">
@@ -41,9 +43,6 @@
         </tr>
       </tbody>
     </table>
-
-    <script src="{% static 'js/jquery-3.4.1.slim.min.js' %}"></script>
-    <script src="{% static 'js/popper.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.js' %}"></script>
-
+		<script src="{% static 'prueba_tabla.js' %}"></script>
+	
 	</body>

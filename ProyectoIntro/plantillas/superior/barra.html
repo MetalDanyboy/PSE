@@ -11,7 +11,7 @@
 <body>
 <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
 <div class="container">
-    <a class="navbar-brand" href="#"><img i id="logo" src="{% static 'images/logo_pse.png' %}"  height="30" width="80" /></a>
+    <a class="navbar-brand" href="{% url 'profesores' %}"><img i id="logo" src="{% static 'images/logo_pse.png' %}"  height="30" width="80" /></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -22,7 +22,7 @@
           Menu
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Ver Cursos</a>
+          <a class="dropdown-item" href="{% url 'cursos_1' %}">Ver Cursos</a>
           <a class="dropdown-item" href="#">Ayuda</a>
           <a class="dropdown-item" href="#">Salir</a>
         </div>
