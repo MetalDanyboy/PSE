@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Info. Alumno {% endblock %}
+
+{% block content %}
+
+<div class="row ml-5 mt-3">
+  <div class="col-4">
+    <div class="card" style="width: 18rem;">
+      <img src="{% static 'images/alumno.jpg' %}"  class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Perfil Alumno</h5>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Juan Perez</li>
+        <li class="list-group-item">3B</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="col-6">
+    <form>
+
+      <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Nombre:</label>
+        <div class="col-sm-10">
+          <input type="text" readonly class="form-control" id="staticEmail" value="Juan Perez">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Fecha Nacimiento:</label>
+        <div class="col-sm-10">
+          <input type="text" readonly class="form-control" id="staticEmail" value="25 marzo 2010">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Numero de Emergencia:</label>
+        <div class="col-sm-10">
+          <input type="text" readonly class="form-control" id="staticEmail" value="+569-40254243">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Apoderados:</label>
+        <div class="col-sm-10">
+          <input type="text" readonly class="form-control" id="staticEmail" value="Maria Perez">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Trastornos:</label>
+        <div class="col-sm-10">
+          <input type="text" readonly class="form-control" id="staticEmail" value="Autismo">
+        </div>
+      </div>
+
+      <fieldset disabled>
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">Observaciones:</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">
+          El niño sufre de ansiedad y tiene problemas para sociabilizar con los demas
+        </textarea>
+      </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
+
+{% endblock %}
