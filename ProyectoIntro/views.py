@@ -15,9 +15,6 @@ def PSE_profesores(request):
 def PSE_profesores_cursos_1(request):
 	return render(request, "profesores/PSE_profesores_cursos_1.html")
 
-def PSE_prueba_profe(request):
-	return render(request, "profesores/PSE_profesores_alumno_info.html")
-
 def PSE_profesores_perfil_profesor(request):
 	return render(request, "profesores/PSE_profesores_perfil_profesor.html")
 
