@@ -23,5 +23,6 @@ urlpatterns = [
     path('', PSE_login, name = "login"),
     path('forgotpassword/', PSE_forgotpassword, name = "forgotpassword"),
     path('profesores/cursos/', PSE_profesores_cursos_1, name = "cursos_1"),
-    path('test/', PSE_prueba_profe, name = "test")
+    path('test/', PSE_prueba_profe, name = "test"),
+    path('profesores/perfil', PSE_profesores_perfil_profesor, name = "perfil_profesor")
 ]
