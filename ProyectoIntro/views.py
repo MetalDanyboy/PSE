@@ -20,3 +20,12 @@ def PSE_prueba_profe(request):
 
 def PSE_profesores_perfil_profesor(request):
 	return render(request, "profesores/PSE_profesores_perfil_profesor.html")
+
+def PSE_profesores_alumno(request):
+	return render(request, "profesores/PSE_profesores_alumno.html")
+
+def PSE_profesores_alumno_info(request):
+	return render(request, "profesores/PSE_profesores_alumno_info.html")
+
+def PSE_test(request):
+	return render(request, "profesores/PSE_profesores_alumno.html")

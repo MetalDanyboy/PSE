@@ -14,16 +14,16 @@
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">Juan Perez</li>
-        <li class="list-group-item">3B</li>
+        <li class="list-group-item">1A</li>
       </ul>
     </div>
   </div>
 
   <div class="col-6">
     <div class="row ml-3 mt-4">
-      <button type="button" href="#" class="btn btn-primary btn-lg btn-block">Ver Calificaciones</button>
-      <button type="button" href="#" class="btn btn-primary btn-lg btn-block">Ver Información Personal</button>
-      <button type="button" href="#" class="btn btn-primary btn-lg btn-block">Ver Progreso</button>
+      <a type="button" class="btn btn-primary btn-lg btn-block" href="#">Ver Calificaciones</a>
+      <a type="button" class="btn btn-primary btn-lg btn-block" href="{% url 'alumno_info' %}">Ver Información Personal</a> 
+      <a type="button" class="btn btn-primary btn-lg btn-block" href="#">Ver Progreso</a>
     </div>
   </div>
 </div>
