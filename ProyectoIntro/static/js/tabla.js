@@ -1,20 +1,23 @@
+function filtrarNombres() {
 
-function myTable() {
-  // Declare variables
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("myTable");
-  tr = table.getElementsByTagName("tr");
+var input, filter, table, tr, td, i, txtValue, txtValue_2;
+input = document.getElementById("filtro");
+filter = input.value.toUpperCase();
+table = document.getElementById("tablaAlumnos");
+tr = table.getElementsByTagName("tr");
 
-  // Loop through all table rows, and hide those who don't match the search query
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+for (i = 0; i < tr.length; i++) {
+  td = tr[i].getElementsByTagName("td")[0];
+  td_2 = tr[i].getElementsByTagName("td")[1];
+  if (td) {
+    txtValue = td.textContent || td.innerText;
+    txtValue_2 = td_2.textContent || td_2.innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1 || txtValue_2.toUpperCase().indexOf(filter) > -1)
+      {
         tr[i].style.display = "";
-      } else {
+      } 
+    else 
+      {
         tr[i].style.display = "none";
       }
     }
