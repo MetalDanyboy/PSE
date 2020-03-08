@@ -18,11 +18,13 @@ from django.urls import path
 from ProyectoIntro.views import *
 
 urlpatterns = [
+    path('test/', PSE_test, name = "test"),
     path('admin/', admin.site.urls, name = "admin"),
     path('profesores/',PSE_profesores, name = "profesores"),
     path('', PSE_login, name = "login"),
     path('forgotpassword/', PSE_forgotpassword, name = "forgotpassword"),
     path('profesores/cursos/', PSE_profesores_cursos_1, name = "cursos_1"),
-    path('test/', PSE_prueba_profe, name = "test"),
+    path('profesores/alumno/', PSE_profesores_alumno, name = "alumno"),
+    path('profesores/alumno/info/', PSE_profesores_alumno_info, name = "alumno_info"),
     path('profesores/perfil', PSE_profesores_perfil_profesor, name = "perfil_profesor")
 ]
