@@ -12,6 +12,9 @@ def PSE_forgotpassword(request):
 def PSE_profesores(request):
     return render(request, "profesores/PSE_profesores.html")
 
+def PSE_profesores_curso_calificaciones(request):
+	return render(request, "profesores/PSE_profesores_curso_calificaciones.html")
+
 def PSE_profesores_cursos_1(request):
 	return render(request, "profesores/PSE_profesores_cursos_1.html")
 
@@ -25,4 +28,4 @@ def PSE_profesores_alumno_info(request):
 	return render(request, "profesores/PSE_profesores_alumno_info.html")
 
 def PSE_test(request):
-	return render(request, "profesores/PSE_profesores_alumno.html")
+	return render(request, "profesores/PSE_profesores_curso_calificaciones.html")

@@ -6,7 +6,7 @@
 	<head>
     	<meta charset="utf-8">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     	<title>
           Tabla de Cursos
     	</title>
@@ -17,16 +17,18 @@
 
 	<body>
     <div class="float-none">
-      <a href="#link" class="btn btn-primary" role="button">Calificaciones Curso</a>
+      <a href="{% url 'curso_calificaciones' %}" class="btn btn-primary" role="button">Calificaciones Curso</a>
       <a href="#link" class="btn btn-primary" role="button">Progreso Curso</a>
     </div>
-		
+
     <input type="text" id="filtro" onkeyup="filtrarNombres()" placeholder="Buscar alumno...">
-    <table id="tablaAlumnos" class="table table-striped table-sm" cellspacing="0" width="100%" >
+
+		<div class="table-responsive">
+    <table id="tablaAlumnos" class="table table-striped table-light table-sm" cellspacing="0" width="100%" >
       <thead>
       	<th class="th-sm">Id</th>
         <th class="th-sm">Nombre</th>
-        <th class="th-sm">Apellido</th>        	
+        <th class="th-sm">Apellido</th>
       </thead>
       <tbody>
         <tr style="transform: rotate(0);">
@@ -51,6 +53,7 @@
 				</tr>
       </tbody>
     </table>
+		</div>
 
     <script src="{% static 'js/tabla.js' %}"></script>
   </body>
