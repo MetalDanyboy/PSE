@@ -26,3 +26,6 @@ def PSE_profesores_alumno_info(request):
 
 def PSE_test(request):
 	return render(request, "profesores/PSE_profesores_alumno.html")
+
+def PSE_obs_por_curso(request):
+	return render(request, "profesores/PSE_profesores_observaciones_por_curso.html")
