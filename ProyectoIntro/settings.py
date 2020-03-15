@@ -25,7 +25,7 @@ SECRET_KEY = 'd6-+e-btc-g60e*_1=02pk807*n-2zl_ou2+-wmlye57jd=41w'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.1.89']
 
 
 # Application definition

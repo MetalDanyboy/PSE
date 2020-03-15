@@ -30,6 +30,9 @@ def PSE_profesores_alumno_info(request):
 def PSE_profesores_alumno_notas(request):
 	return render(request, "profesores/PSE_profesores_alumno_notas.html")
 
+def PSE_profesores_alumno_progreso(request):
+	return render(request, "profesores/PSE_profesores_alumno_progreso.html")
+
 def PSE_test(request):
 	return render(request, "profesores/PSE_profesores_alumno.html")
 
