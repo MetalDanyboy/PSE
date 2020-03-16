@@ -34,14 +34,14 @@
       <tbody>
 
       {% for estudiante in estudiantes %}
-        {% if estudiante.curso == "1A" %}
-        <tr style="transform: rotate(0);">
-        <th scope="row"><a href="https://www.google.cl" class="stretched-link">{{estudiante.id}}</a></th>
-          <td>{{estudiante.nombres}}</td>
-          <td>{{estudiante.apellidos}}</td>
-          <td>{{estudiante.curso}}</td>
-        </tr>
-        {% endif %}
+          {% if estudiante.curso == "1A" %}
+          <tr style="transform: rotate(0);">
+            <th scope="row"><a href="{% url 'alumno' %}" class="stretched-link">{{estudiante.id}}</a></th>
+            <td>{{estudiante.nombres}}</td>
+            <td>{{estudiante.apellidos}}</td>
+            <td>{{estudiante.curso}}</td>
+          </tr>
+          {% endif %}
       {% endfor %}
       </tbody>
     </table>

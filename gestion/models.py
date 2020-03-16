@@ -35,3 +35,9 @@ class Apoderado(models.Model):
 
     def __str__(self):
         return "{} {}".format(self.nombres,self.apellidos)
+
+class Cursos(models.Model):
+    curso=models.CharField(max_length=2)
+
+    def __str__(self):
+        return "{}".format(self.curso)
