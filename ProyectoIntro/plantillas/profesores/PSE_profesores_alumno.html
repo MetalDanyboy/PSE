@@ -5,27 +5,32 @@
 
 {% block content %}
 
-<div class="row ml-5 mt-3">
-  <div class="col-4">
-    <div class="card" style="width: 18rem;">
-      <img src="{% static 'images/alumno.jpg' %}"  class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Perfil Alumno</h5>
+<div class="container-fluid">
+
+
+  <div class="row ml-5 mt-3">
+    <div class="col-4">
+      <div class="card" style="width: 18rem;">
+        <img src="{% static 'images/alumno.jpg' %}"  class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Perfil Alumno</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Juan Perez</li>
+          <li class="list-group-item">1A</li>
+        </ul>
       </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Juan Perez</li>
-        <li class="list-group-item">1A</li>
-      </ul>
+    </div>
+
+    <div class="col-6">
+      <div class="row ml-3 mt-4">
+        <a type="button" class="btn btn-primary btn-lg btn-block" href="{% url 'alumno_notas' %}">Ver Calificaciones</a>
+        <a type="button" class="btn btn-primary btn-lg btn-block" href="{% url 'alumno_info' %}">Ver Información Personal</a>
+        <a type="button" class="btn btn-primary btn-lg btn-block" href="{% url 'alumno_progreso' %}">Ver Progreso</a>
+      </div>
     </div>
   </div>
 
-  <div class="col-6">
-    <div class="row ml-3 mt-4">
-      <a type="button" class="btn btn-primary btn-lg btn-block" href="{% url 'alumno_notas' %}">Ver Calificaciones</a>
-      <a type="button" class="btn btn-primary btn-lg btn-block" href="{% url 'alumno_info' %}">Ver Información Personal</a>
-      <a type="button" class="btn btn-primary btn-lg btn-block" href="{% url 'alumno_progreso' %}">Ver Progreso</a>
-    </div>
-  </div>
 </div>
 
 {% endblock %}
