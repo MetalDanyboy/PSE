@@ -8,7 +8,7 @@
     	<meta name="viewport" content="width=device-width, initial-scale=1">
 
     	<title>
-          Tabla de Cursos
+          test
     	</title>
 
       <link rel="stylesheet" href="{% static 'css/prueba_tabla.css' %}">
@@ -35,12 +35,12 @@
 
       {% for estudiante in estudiantes %}
           {% if estudiante.curso == "1A" %}
-          <tr style="transform: rotate(0);">
-            <th scope="row"><a href="{% url 'alumno' %}" class="stretched-link">{{estudiante.id}}</a></th>
-            <td>{{estudiante.nombres}}</td>
-            <td>{{estudiante.apellidos}}</td>
-            <td>{{estudiante.curso}}</td>
-          </tr>
+          	<tr style="transform: rotate(0);">
+            	<th scope="row"><a href="{% url 'alumno' user=estudiante.id %}" class="stretched-link">{{estudiante.id}}</a></th>
+            	<td>{{estudiante.nombres}}</td>
+            	<td>{{estudiante.apellidos}}</td>
+            	<td>{{estudiante.curso}}</td>
+          	</tr>
           {% endif %}
       {% endfor %}
       </tbody>

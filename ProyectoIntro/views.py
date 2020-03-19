@@ -25,8 +25,9 @@ def PSE_profesores_cursos_1(request):
 def PSE_profesores_perfil_profesor(request):
 	return render(request, "profesores/PSE_profesores_perfil_profesor.html")
 
-def PSE_profesores_alumno(request):
-	return render(request, "profesores/PSE_profesores_alumno.html")
+def PSE_profesores_alumno(request,user):
+	estudiante=Estudiante.objects.filter(id__icontains=user)
+	return render(request, "profesores/PSE_profesores_alumno.html",{"estudiante":estudiante})
 
 def PSE_profesores_alumno_info(request):
 	return render(request, "profesores/PSE_profesores_alumno_info.html")
