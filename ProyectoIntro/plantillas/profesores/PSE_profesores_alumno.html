@@ -9,8 +9,8 @@
 
 
   <div class="row ml-5 mt-3">
-    <div class="col-4">
-      <div class="card" style="width: 18rem;">
+    <div class="col-9 col-sm-3">
+      <div class="card">
         <img src="{% static 'images/alumno.jpg' %}"  class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">Perfil Alumno</h5>
@@ -22,12 +22,10 @@
       </div>
     </div>
 
-    <div class="col-6">
-      <div class="row ml-3 mt-4">
+    <div class="col-9 ml-sm-5 mt-3 mb-3 col-sm-6">
         <a type="button" class="btn btn-primary btn-lg btn-block" href="{% url 'alumno_notas' %}">Ver Calificaciones</a>
         <a type="button" class="btn btn-primary btn-lg btn-block" href="{% url 'alumno_info' %}">Ver Información Personal</a>
         <a type="button" class="btn btn-primary btn-lg btn-block" href="{% url 'alumno_progreso' %}">Ver Progreso</a>
-      </div>
     </div>
   </div>
 
