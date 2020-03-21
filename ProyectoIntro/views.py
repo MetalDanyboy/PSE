@@ -16,11 +16,10 @@ def PSE_profesores(request):
 def PSE_profesores_curso_calificaciones(request):
 	return render(request, "profesores/PSE_profesores_curso_calificaciones.html")
 
-def PSE_profesores_cursos_1(request):
-
+def PSE_profesores_cursos(request):
 	cursos=Cursos.objects.filter()
 	estudiantes=Estudiante.objects.filter()
-	return render(request, "profesores/PSE_profesores_cursos_1.html",{"estudiantes":estudiantes,"cursos":cursos})
+	return render(request, "profesores/PSE_profesores_cursos.html",{"estudiantes":estudiantes,"cursos":cursos})
 
 def PSE_profesores_perfil_profesor(request):
 	return render(request, "profesores/PSE_profesores_perfil_profesor.html")

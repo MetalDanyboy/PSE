@@ -1,5 +1,4 @@
 from django.db import models
-from PIL import Image
 
 # Create your models here.
 
@@ -25,8 +24,6 @@ class Estudiante(models.Model):
     apoderado=models.CharField(max_length=50)
     trastorno=models.CharField(max_length=100)
     observaciones=models.CharField(max_length=500)
-    foto=models.ImageField(upload_to='media')
-
 
     def __str__(self):
         return "{} {}".format(self.nombres,self.apellidos)
