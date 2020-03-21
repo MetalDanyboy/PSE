@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block title %} Info. Alumno {% endblock %}
 
@@ -16,8 +17,8 @@
         <h5 class="card-title">Perfil Alumno</h5>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">Juan Perez</li>
-        <li class="list-group-item">1A</li>
+        <li class="list-group-item">{{estudiante.0}}</li>
+        <li class="list-group-item">{{estudiante.0.curso}}</li>
       </ul>
     </div>
   </div>
@@ -25,37 +26,54 @@
   <div class="col-9 ml-sm-5 mt-3 mb-3 col-sm-6">
     <form>
       <div class="form-group row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Nombre:</label>
+        <label for="text" class="col-sm-2 col-form-label">Nombre:</label>
         <div class="col-sm-10">
-          <input type="text" readonly class="form-control" id="staticEmail" value="Juan Perez">
+          <input type="text" readonly class="form-control" id="text" value="{{estudiante.0}}">
         </div>
       </div>
 
+
+      {% language 'es' %}
       <div class="form-group row">
         <label for="staticEmail" class="col-sm-2 col-form-label">Fecha Nacimiento:</label>
         <div class="col-sm-10">
-          <input type="text" readonly class="form-control" id="staticEmail" value="25 marzo 2015">
+          <input type="text" readonly class="form-control" id="staticEmail" value="{{estudiante.0.fecha_nac}}">
         </div>
       </div>
+      {% endlanguage %}
 
       <div class="form-group row">
         <label for="staticEmail" class="col-sm-2 col-form-label">Numero de Emergencia:</label>
         <div class="col-sm-10">
-          <input type="text" readonly class="form-control" id="staticEmail" value="+569-40254243">
+          <input type="text" readonly class="form-control" id="staticEmail" value="{{estudiante.0.num_emergencia}}">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Email de Contacto:</label>
+        <div class="col-sm-10">
+          <input type="text" readonly class="form-control" id="staticEmail" value="{{estudiante.0.email_contacto}}">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Dirección:</label>
+        <div class="col-sm-10">
+          <input type="text" readonly class="form-control" id="staticEmail" value="{{estudiante.0.direccion}}">
         </div>
       </div>
 
       <div class="form-group row">
         <label for="staticEmail" class="col-sm-2 col-form-label">Apoderados:</label>
         <div class="col-sm-10">
-          <input type="text" readonly class="form-control" id="staticEmail" value="Maria Perez">
+          <input type="text" readonly class="form-control" id="staticEmail" value="{{estudiante.0.apoderado}}">
         </div>
       </div>
 
       <div class="form-group row">
         <label for="staticEmail" class="col-sm-2 col-form-label">Trastornos:</label>
         <div class="col-sm-10">
-          <input type="text" readonly class="form-control" id="staticEmail" value="Autismo">
+          <input type="text" readonly class="form-control" id="staticEmail" value="{{estudiante.0.trastorno}}">
         </div>
       </div>
 
@@ -63,7 +81,7 @@
       <div class="form-group">
         <label for="exampleFormControlTextarea1">Observaciones:</label>
         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">
-          El niño sufre de ansiedad y tiene problemas para sociabilizar con los demas
+          {{estudiante.0.observaciones}}
         </textarea>
       </div>
       </fieldset>

@@ -1,4 +1,5 @@
 from django.db import models
+from PIL import Image
 
 # Create your models here.
 
@@ -16,11 +17,16 @@ class Profesor(models.Model):
 class Estudiante(models.Model):
     nombres=models.CharField(max_length=40)
     apellidos=models.CharField(max_length=40)
-    email=models.EmailField()
+    fecha_nac=models.DateField()
+    email_contacto=models.EmailField()
     direccion=models.CharField(max_length=50)
-    telefono=models.CharField(max_length=11)
+    num_emergencia=models.CharField(max_length=11)
     curso=models.CharField(max_length=2)
     apoderado=models.CharField(max_length=50)
+    trastorno=models.CharField(max_length=100)
+    observaciones=models.CharField(max_length=500)
+    foto=models.ImageField(upload_to='media')
+
 
     def __str__(self):
         return "{} {}".format(self.nombres,self.apellidos)
