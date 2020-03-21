@@ -130,3 +130,4 @@ STATICFILES_DIRS=("C:/Users/Familia/Documents/GitHub/PSE/ProyectoIntro/static","
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = 'profesores'
+LOGIN_URL = 'login'
