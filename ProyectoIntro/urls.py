@@ -16,14 +16,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from ProyectoIntro.views import *
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('test/', PSE_test, name = "test"),
+    path('', auth_views.LoginView.as_view(template_name='PSE_login.html'), name='login'),
+    path('logout/', auth_views.LogoutView.as_view(template_name="PSE_logout.html"), name='logout'),
     path('admin/', admin.site.urls, name = "admin"),
     path('profesores/',PSE_profesores, name = "profesores"),
-    path('', PSE_login, name = "login"),
     path('forgotpassword/', PSE_forgotpassword, name = "forgotpassword"),
-    path('profesores/cursos/', PSE_profesores_cursos_1, name = "cursos_1"),
+    path('profesores/cursos/', PSE_profesores_cursos, name = "cursos"),
     path('profesores/cursos/calificaciones',PSE_profesores_curso_calificaciones, name = "curso_calificaciones"),
     path('profesores/alumno/<user>', PSE_profesores_alumno, name = "alumno"),
     path('profesores/alumno/notas/', PSE_profesores_alumno_notas, name = "alumno_notas"),
