@@ -4,8 +4,8 @@ from gestion.models import *
 
 
 class profesor_admin(admin.ModelAdmin):
-    list_display=("nombres","apellidos","email")
-    search_fields=("nombres","apellidos")
+    list_display=("nombres","apellidos","email","nom_usuario")
+    search_fields=("nombres","apellidos","nom_usuario")
 
 
 class estudiante_admin(admin.ModelAdmin):

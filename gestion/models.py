@@ -3,6 +3,7 @@ from django.db import models
 # Create your models here.
 
 class Profesor(models.Model):
+    nom_usuario=models.CharField(max_length=50)
     nombres=models.CharField(max_length=40)
     apellidos=models.CharField(max_length=40)
     email=models.EmailField()
@@ -41,6 +42,7 @@ class Apoderado(models.Model):
 
 class Cursos(models.Model):
     curso=models.CharField(max_length=2)
+    
 
     def __str__(self):
         return "{}".format(self.curso)
