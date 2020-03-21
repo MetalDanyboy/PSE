@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.template import Template, Context
 from django.template import loader
 from django.shortcuts import render
-from gestion.models import Estudiante, Cursos
+from gestion.models import Estudiante, Cursos, Profesor
 from django.contrib.auth.decorators import login_required
 
 def PSE_login(request):
@@ -21,9 +21,36 @@ def PSE_profesores_curso_calificaciones(request):
 
 @login_required
 def PSE_profesores_cursos(request):
-	cursos=Cursos.objects.filter()
+
+	nombre_prof=request.user.first_name+' '+request.user.last_name
+	profesores=Profesor.objects.all()
+	ramos=None
+	for profe in profesores:
+		if profe.nombres+' '+profe.apellidos == nombre_prof:
+			ramos=profe.ramos
+	cursos=None		
+	if(request.GET.get('seleccion')):
+		if request.GET.get('seleccion')=='matematica':
+			cursos=Cursos.objects.filter(matematica__icontains=nombre_prof)
+		elif request.GET.get('seleccion')=='lenguaje':
+			cursos=Cursos.objects.filter(lenguaje__icontains=nombre_prof)
+		elif request.GET.get('seleccion')=='historia':
+			cursos=Cursos.objects.filter(historia__icontains=nombre_prof)
+		elif request.GET.get('seleccion')=='ciencia':
+			cursos=Cursos.objects.filter(ciencia__icontains=nombre_prof)
+		elif request.GET.get('seleccion')=='ingles':
+			cursos=Cursos.objects.filter(ingles__icontains=nombre_prof)
+		elif request.GET.get('seleccion')=='artes':
+			cursos=Cursos.objects.filter(artes__icontains=nombre_prof)
+		elif request.GET.get('seleccion')=='taller':
+			cursos=Cursos.objects.filter(taller__icontains=nombre_prof)
+		elif request.GET.get('seleccion')=='musica':
+			cursos=Cursos.objects.filter(musica__icontains=nombre_prof)
+		elif request.GET.get('seleccion')=='ed_fisica':
+			cursos=Cursos.objects.filter(ed_fisica__icontains=nombre_prof)
+
 	estudiantes=Estudiante.objects.filter()
-	return render(request, "profesores/PSE_profesores_cursos.html",{"estudiantes":estudiantes,"cursos":cursos})
+	return render(request, "profesores/PSE_profesores_cursos.html",{"estudiantes":estudiantes,"cursos":cursos,"ramos":ramos})
 
 @login_required
 def PSE_profesores_perfil_profesor(request):

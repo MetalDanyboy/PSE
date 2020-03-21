@@ -4,8 +4,8 @@ from gestion.models import *
 
 
 class profesor_admin(admin.ModelAdmin):
-    list_display=("nombres","apellidos","email","nom_usuario")
-    search_fields=("nombres","apellidos","nom_usuario")
+    list_display=("nombres","apellidos","email","nom_usuario","ramos")
+    search_fields=("nombres","apellidos","nom_usuario","ramos")
 
 
 class estudiante_admin(admin.ModelAdmin):
@@ -18,8 +18,9 @@ class apoderado_admin(admin.ModelAdmin):
     search_fields=("nombres","apellidos","pupilo")
 
 class cursos_admin(admin.ModelAdmin):
-    list_display=("curso",)
-    search_fields=("curso",)
+    list_display=("curso","matematica","lenguaje","historia","ciencia","ingles","artes","taller","musica","ed_fisica")
+    search_fields=("curso","matematica","lenguaje","historia","ciencia","ingles","artes","taller","musica","ed_fisica")
+    list_filter=("curso",)
 
 admin.site.register(Profesor, profesor_admin)
 admin.site.register(Estudiante, estudiante_admin)
