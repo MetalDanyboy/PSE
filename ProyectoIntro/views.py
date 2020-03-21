@@ -3,6 +3,7 @@ from django.template import Template, Context
 from django.template import loader
 from django.shortcuts import render
 from gestion.models import Estudiante, Cursos
+from django.contrib.auth.decorators import login_required
 
 def PSE_login(request):
 	return render(request, "PSE_login.html")
@@ -10,12 +11,14 @@ def PSE_login(request):
 def PSE_forgotpassword(request):
 	return render(request, "PSE_forgotpassword.html")
 
+@login_required
 def PSE_profesores(request):
     return render(request, "profesores/PSE_profesores.html")
 
 def PSE_profesores_curso_calificaciones(request):
 	return render(request, "profesores/PSE_profesores_curso_calificaciones.html")
 
+@login_required
 def PSE_profesores_cursos(request):
 	cursos=Cursos.objects.filter()
 	estudiantes=Estudiante.objects.filter()

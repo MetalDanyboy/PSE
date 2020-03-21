@@ -9,7 +9,7 @@
     <meta name = "viewport" content = "width = device-width, initial.scale = 1.0">
     <meta htpp-equiv = "X-UA-compatible" content = "ie-edge">
 
-    <title>Log In</title>
+    <title>TEST</title>
 
     <!--FONTS-->
 
@@ -25,29 +25,7 @@
 
 <body>
 
-    <div class = "row">
-        <div class = "col-lg-4 m-auto">
-            <div class = "card mt-4">
-                <div class = "card-title ml-4 mt-3">
-                    <h2 class="font-weight-bold">Iniciar Sesión</h2>
-                </div>
-                <div class = "card-body">
-                    <form method = "POST">
-                        {% csrf_token %}
-                        <fieldset class="form-group">
-                          <legend class="border_bottom mb-4"> Log In </legend>
-                          {{ form|crispy }}
-                        </fieldset>
-                        <div class="form-group">
-                          <button type="submit" class="btn btn-outline-info">
-                            Iniciar Sesión
-                          </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+    <h1>{{ user.username }}</h1>
 
 </body>
 
