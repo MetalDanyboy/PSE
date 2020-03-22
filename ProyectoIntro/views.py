@@ -5,6 +5,9 @@ from django.shortcuts import render
 from gestion.models import Estudiante, Cursos, Profesor
 from django.contrib.auth.decorators import login_required
 
+def upper(string):
+	return str(string).upper()
+
 def PSE_login(request):
 	return render(request, "PSE_login.html")
 
@@ -27,26 +30,29 @@ def PSE_profesores_cursos(request):
 	ramos=None
 	for profe in profesores:
 		if profe.nombres+' '+profe.apellidos == nombre_prof:
-			ramos=profe.ramos
-	cursos=None		
-	if(request.GET.get('seleccion')):
-		if request.GET.get('seleccion')=='matematica':
+			ramos = map(upper,profe.ramos)
+	cursos=None
+
+	ramos_minuscula = request.GET.get('seleccion').lower()
+
+	if(ramos_minuscula):
+		if ramos_minuscula=='matematica':
 			cursos=Cursos.objects.filter(matematica__icontains=nombre_prof)
-		elif request.GET.get('seleccion')=='lenguaje':
+		elif ramos_minuscula=='lenguaje':
 			cursos=Cursos.objects.filter(lenguaje__icontains=nombre_prof)
-		elif request.GET.get('seleccion')=='historia':
+		elif ramos_minuscula=='historia':
 			cursos=Cursos.objects.filter(historia__icontains=nombre_prof)
-		elif request.GET.get('seleccion')=='ciencia':
+		elif ramos_minuscula=='ciencia':
 			cursos=Cursos.objects.filter(ciencia__icontains=nombre_prof)
-		elif request.GET.get('seleccion')=='ingles':
+		elif ramos_minuscula=='ingles':
 			cursos=Cursos.objects.filter(ingles__icontains=nombre_prof)
-		elif request.GET.get('seleccion')=='artes':
+		elif ramos_minuscula=='artes':
 			cursos=Cursos.objects.filter(artes__icontains=nombre_prof)
-		elif request.GET.get('seleccion')=='taller':
+		elif ramos_minuscula=='taller':
 			cursos=Cursos.objects.filter(taller__icontains=nombre_prof)
-		elif request.GET.get('seleccion')=='musica':
+		elif ramos_minuscula=='musica':
 			cursos=Cursos.objects.filter(musica__icontains=nombre_prof)
-		elif request.GET.get('seleccion')=='ed_fisica':
+		elif ramos_minuscula=='ed_fisica':
 			cursos=Cursos.objects.filter(ed_fisica__icontains=nombre_prof)
 
 	estudiantes=Estudiante.objects.filter()
