@@ -62,8 +62,7 @@ def PSE_profesores_cursos(request):
 
 @login_required
 def PSE_profesores_perfil_profesor(request):
-	profesor=Profesor.objects.filter(nom_usuario__icontains=request.user.username)
-	return render(request, "profesores/PSE_profesores_perfil_profesor.html",{"profesor":profesor})
+	return render(request, "profesores/PSE_profesores_perfil_profesor.html",{"profesor":request.user.profile})
 
 @login_required
 def PSE_profesores_alumno(request,user):

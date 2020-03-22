@@ -12,7 +12,7 @@
 
     <div class="col-9 col-sm-3">
       <div class="card">
-        <img src="{{profesor.0.foto.url}}"  class="card-img-top"  alt="foto de perfil" height="300">
+        <img src="{{profesor.foto.url}}"  class="card-img-top"  alt="foto de perfil" height="300">
         <div class="card-body">
           <h5 class="card-title">Perfil Profesor</h5>
         </div>
@@ -25,7 +25,7 @@
         <div class="form-group row">
           <label for="staticEmail" class="col-sm-2 col-form-label">Nombre:</label>
           <div class="col-sm-10">
-            <input type="text" readonly class="form-control" id="staticEmail" value="{{profesor.0}}">
+            <input type="text" readonly class="form-control" id="staticEmail" value="{{profesor}}">
           </div>
         </div>
 
@@ -33,7 +33,7 @@
         <div class="form-group row">
           <label for="staticEmail" class="col-sm-4 col-form-label">Fecha de Nacimiento:</label>
           <div class="col-sm-8">
-            <input type="text" readonly class="form-control" id="staticEmail" value="{{profesor.0.fecha_nac}}">
+            <input type="text" readonly class="form-control" id="staticEmail" value="{{profesor.fecha_nac}}">
           </div>
         </div>
         {% endlanguage %}
@@ -41,7 +41,7 @@
         <div class="form-group row">
           <label for="staticEmail" class="col-sm-3 col-form-label">Correo Electrónico:</label>
           <div class="col-sm-9">
-            <input type="text" readonly class="form-control" id="staticEmail" value="{{profesor.0.email}}">
+            <input type="text" readonly class="form-control" id="staticEmail" value="{{profesor.email}}">
           </div>
         </div>
 

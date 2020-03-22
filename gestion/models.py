@@ -1,5 +1,6 @@
 from django.db import models
 from multiselectfield import MultiSelectField
+from django.contrib.auth.models import User
 # Create your models here.
 
 class Profesor(models.Model):
@@ -13,7 +14,7 @@ class Profesor(models.Model):
               ('musica', 'Musica'),
               ('ed_fisica', 'Ed. Fisica'))
 
-    nom_usuario=models.CharField(max_length=50)
+    nom_usuario=models.OneToOneField(User, default=1, related_name='profile', primary_key=True, on_delete=models.SET_DEFAULT)
     nombres=models.CharField(max_length=40)
     apellidos=models.CharField(max_length=40)
     fecha_nac=models.DateField(null=True,blank=True)

@@ -32,7 +32,7 @@
 
         <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-1  my-auto">
           <a href="{% url 'perfil_profesor' %}">
-            <img src="{% static 'images/usuario.png' %}" class="img-fluid rounded" width="100"/>
+            <img src="{{ user.profile.foto.url }}" class="img-fluid rounded" width="100"/>
           </a>
         </div>
 
