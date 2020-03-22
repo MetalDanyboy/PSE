@@ -83,12 +83,48 @@ def PSE_profesores_alumno_notas(request):
 def PSE_profesores_alumno_progreso(request):
 	return render(request, "profesores/PSE_profesores_alumno_progreso.html")
 
-def PSE_test(request):
-
-	estudiantes=Estudiante.objects.filter()
-
-	return render(request, "profesores/test.html",{"estudiantes":estudiantes} )
-
 @login_required
 def PSE_obs_por_curso(request):
 	return render(request, "profesores/PSE_profesores_observaciones_por_curso.html")
+
+
+
+
+#-------------------Usar solo para Pruebas-------------------------
+
+
+def PSE_test(request):
+	nombre_prof=request.user.first_name+' '+request.user.last_name
+	profesores=Profesor.objects.all()
+	ramos=None
+	for profe in profesores:
+		if profe.nombres+' '+profe.apellidos == nombre_prof:
+			ramos = map(upper,profe.ramos)
+	cursos=None
+
+	ramos_minuscula=''
+	if  request.GET.get('seleccion'):
+		ramos_minuscula = request.GET.get('seleccion').lower()
+
+	if(ramos_minuscula):
+		if ramos_minuscula=='matematica':
+			cursos=Cursos.objects.filter(matematica__icontains=nombre_prof)
+		elif ramos_minuscula=='lenguaje':
+			cursos=Cursos.objects.filter(lenguaje__icontains=nombre_prof)
+		elif ramos_minuscula=='historia':
+			cursos=Cursos.objects.filter(historia__icontains=nombre_prof)
+		elif ramos_minuscula=='ciencia':
+			cursos=Cursos.objects.filter(ciencia__icontains=nombre_prof)
+		elif ramos_minuscula=='ingles':
+			cursos=Cursos.objects.filter(ingles__icontains=nombre_prof)
+		elif ramos_minuscula=='artes':
+			cursos=Cursos.objects.filter(artes__icontains=nombre_prof)
+		elif ramos_minuscula=='taller':
+			cursos=Cursos.objects.filter(taller__icontains=nombre_prof)
+		elif ramos_minuscula=='musica':
+			cursos=Cursos.objects.filter(musica__icontains=nombre_prof)
+		elif ramos_minuscula=='ed_fisica':
+			cursos=Cursos.objects.filter(ed_fisica__icontains=nombre_prof)
+
+	estudiantes=Estudiante.objects.filter()
+	return render(request, "profesores/test.html",{"estudiantes":estudiantes,"cursos":cursos,"ramos":ramos})

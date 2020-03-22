@@ -1,4 +1,4 @@
-function filtrarNombres() {
+object.onkeyup =function filtrarNombres() {
 
 var input, filter, table, tr, td, i, txtValue, txtValue_2;
 input = document.getElementById("filtro");
@@ -12,11 +12,12 @@ for (i = 0; i < tr.length; i++) {
   if (td) {
     txtValue = td.textContent || td.innerText;
     txtValue_2 = td_2.textContent || td_2.innerText;
-    if (txtValue.toUpperCase().indexOf(filter) > -1 || txtValue_2.toUpperCase().indexOf(filter) > -1)
+    txtValue_sum=txtValue+" "+txtValue_2;
+    if (txtValue.toUpperCase().includes(filter) || txtValue_2.toUpperCase().includes(filter) || txtValue_3.toUpperCase().includes(filter) )
       {
         tr[i].style.display = "";
-      } 
-    else 
+      }
+    else
       {
         tr[i].style.display = "none";
       }

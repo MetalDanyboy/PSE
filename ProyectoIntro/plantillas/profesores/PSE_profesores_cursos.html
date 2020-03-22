@@ -6,13 +6,13 @@
 {% block content %}
 
 <div class="container-fluid">
-  
+
   <div class="row ml-3 mt-3">
     <div class="col-4">
       <div class="jumbotron">
         <h1 class="display-4">Mis Ramos:</h1>
         <h5>Seleccione que ramo quiere ver:</h5>
-          <div class="btn-group btn-group-toggle" data-toggle="buttons">  
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
               <form action="#" method="get">
               {% for ramo in ramos %}
                 <label class="btn btn-primary">
@@ -53,7 +53,6 @@
                 <th class="th-sm">Curso</th>
               </thead>
               <tbody>
-
                 {% for estudiante in estudiantes %}
                   {% if estudiante.curso == curso.curso %}
                     <tr style="transform: rotate(0);">

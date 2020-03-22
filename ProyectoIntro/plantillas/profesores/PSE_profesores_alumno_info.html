@@ -10,18 +10,19 @@
 
 
 <div class="row ml-5 mt-3">
-  <div class="col-9 col-sm-3">
+  <div class="col-9 col-sm-3 mb-5">
     <div class="card">
       {% if estudiante.0.foto %}
-      <img src="{{estudiante.0.foto.url}}"  class="card-img-top" alt="foto de perfil" height="300">
+      <img src="{{estudiante.0.foto.url}}"  class="card-img-top" alt="foto de perfil" height="260">
       {% endif %}
-      <div class="card-body">
+      <div class="card-body text-primary">
         <h5 class="card-title">Perfil Alumno</h5>
-      </div>
+
       <ul class="list-group list-group-flush">
         <li class="list-group-item">{{estudiante.0}}</li>
         <li class="list-group-item">{{estudiante.0.curso}}</li>
       </ul>
+    </div>
     </div>
   </div>
 
