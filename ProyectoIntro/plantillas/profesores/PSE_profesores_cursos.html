@@ -9,13 +9,15 @@
   
   <div class="row ml-3 mt-3">
     <div class="col-4">
-      <h1>Mis Ramos:</h1>
-      <div class="btn-group btn-group-toggle" data-toggle="buttons">
-          {% for ramo in ramos %}
+      <h1 class="display-4">Mis Ramos</h1>
+      <div class="btn-group btn-group-toggle" data-toggle="buttons">  
           <form action="#" method="get">
-            <input type="submit" class="btn btn-secondary" value="{{ramo}}" name="seleccion">
-          </form>
+          {% for ramo in ramos %}
+            <label class="btn btn-primary">
+              <input type="submit" class="btn btn-primary" value="{{ramo}}" name="seleccion">
+            </label>
           {% endfor %}
+        </form>
       </div>
     </div>
   </div>
