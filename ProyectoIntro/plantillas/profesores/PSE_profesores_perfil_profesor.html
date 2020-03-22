@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block title %} Perfil Profesor {% endblock %}
 
@@ -11,7 +12,7 @@
 
     <div class="col-9 col-sm-3">
       <div class="card">
-        <img src="{% static 'images/profesor.jpg' %}"  class="card-img-top" alt="...">
+        <img src="{{profesor.0.foto.url}}"  class="card-img-top"  alt="foto de perfil" height="300">
         <div class="card-body">
           <h5 class="card-title">Perfil Profesor</h5>
         </div>
@@ -24,21 +25,23 @@
         <div class="form-group row">
           <label for="staticEmail" class="col-sm-2 col-form-label">Nombre:</label>
           <div class="col-sm-10">
-            <input type="text" readonly class="form-control" id="staticEmail" value="Diego Gonzalez">
+            <input type="text" readonly class="form-control" id="staticEmail" value="{{profesor.0}}">
           </div>
         </div>
 
+        {% language 'es' %}
         <div class="form-group row">
           <label for="staticEmail" class="col-sm-4 col-form-label">Fecha de Nacimiento:</label>
           <div class="col-sm-8">
-            <input type="text" readonly class="form-control" id="staticEmail" value="30/02/1960">
+            <input type="text" readonly class="form-control" id="staticEmail" value="{{profesor.0.fecha_nac}}">
           </div>
         </div>
+        {% endlanguage %}
 
         <div class="form-group row">
           <label for="staticEmail" class="col-sm-3 col-form-label">Correo Electrónico:</label>
           <div class="col-sm-9">
-            <input type="text" readonly class="form-control" id="staticEmail" value="diego.gonzalez@mail.com">
+            <input type="text" readonly class="form-control" id="staticEmail" value="{{profesor.0.email}}">
           </div>
         </div>
 

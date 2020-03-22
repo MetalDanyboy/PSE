@@ -16,10 +16,12 @@ class Profesor(models.Model):
     nom_usuario=models.CharField(max_length=50)
     nombres=models.CharField(max_length=40)
     apellidos=models.CharField(max_length=40)
+    fecha_nac=models.DateField(null=True,blank=True)
     email=models.EmailField()
     direccion=models.CharField(max_length=50)
     telefono=models.CharField(max_length=11)
     ramos=MultiSelectField(choices=MY_CHOICES,default=MY_CHOICES[0][0])
+    foto=models.ImageField(null=True,blank=True)
 
     def __str__(self):
         return "{} {}".format(self.nombres,self.apellidos)
@@ -36,6 +38,7 @@ class Estudiante(models.Model):
     apoderado=models.CharField(max_length=50)
     trastorno=models.CharField(max_length=100)
     observaciones=models.CharField(max_length=500)
+    foto=models.ImageField(null=True,blank=True)
 
     def __str__(self):
         return "{} {}".format(self.nombres,self.apellidos)
@@ -62,8 +65,6 @@ class Cursos(models.Model):
     taller=models.CharField(max_length=50)
     musica=models.CharField(max_length=50)
     ed_fisica=models.CharField(max_length=50)
-
-
 
     def __str__(self):
         return "{}".format(self.curso)

@@ -17,19 +17,25 @@
 
     <!-- Nuestro css-->
     <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
-    
+
     <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
 </head>
 
 <body>
-    <div class = "row">
-        <div class = "col">
+    <div class = "row mt-4">
+        <div class = "col-lg-4 m-auto">
             <h2>Has cerrado sesión.</h2>
         </div>
     </div>
 
 </body>
+<script>
+    function redirect(){
+       window.location.href = "{% url 'login' %}";
+    }
 
+    setTimeout(redirect, 1500); //2000 is equivalent to 2 seconds
+</script>
 </html>

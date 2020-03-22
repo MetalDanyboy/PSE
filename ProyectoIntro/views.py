@@ -8,8 +8,8 @@ from django.contrib.auth.decorators import login_required
 def upper(string):
 	return str(string).upper()
 
-def PSE_login(request):
-	return render(request, "PSE_login.html")
+"""def PSE_login(request):
+	return render(request, "PSE_login.html")""" #ESTO NO ERA NECESARIO
 
 def PSE_forgotpassword(request):
 	return render(request, "PSE_forgotpassword.html")
@@ -62,7 +62,8 @@ def PSE_profesores_cursos(request):
 
 @login_required
 def PSE_profesores_perfil_profesor(request):
-	return render(request, "profesores/PSE_profesores_perfil_profesor.html")
+	profesor=Profesor.objects.filter(nom_usuario__icontains=request.user.username)
+	return render(request, "profesores/PSE_profesores_perfil_profesor.html",{"profesor":profesor})
 
 @login_required
 def PSE_profesores_alumno(request,user):

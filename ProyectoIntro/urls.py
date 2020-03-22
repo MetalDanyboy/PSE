@@ -15,6 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+
+
+from django.conf import settings
+from django.views.static import serve
+
 from ProyectoIntro.views import *
 from django.contrib.auth import views as auth_views
 
@@ -34,3 +39,10 @@ urlpatterns = [
     path('profesores/perfil', PSE_profesores_perfil_profesor, name = "perfil_profesor"),
     path('profesores/obs_curso', PSE_obs_por_curso, name = "obs_por_curso")
 ]
+
+if settings.DEBUG:
+    urlpatterns+= [
+        path('media/<path>',serve,{
+        'document_root':settings.MEDIA_ROOT,
+        }),
+    ]

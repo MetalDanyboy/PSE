@@ -9,7 +9,7 @@
 </head>
 
 <body>
-<div class="container-fluid">
+
 
 
 <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
@@ -28,7 +28,7 @@
           <a class="dropdown-item" href="{% url 'perfil_profesor' %}">Cuenta</a>
           <a class="dropdown-item" href="{% url 'cursos' %}">Ver Cursos</a>
           <a class="dropdown-item" href="#">Ayuda</a>
-          <a class="dropdown-item" href="#">Salir</a>
+          <a class="dropdown-item" href="{% url 'logout' %}">Salir</a>
         </div>
       </li>
     </ul>
@@ -41,7 +41,7 @@
   </div>
 </nav>
 
-</div>
+
 </body>
 
 </html>
