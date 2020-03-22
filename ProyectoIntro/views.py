@@ -33,7 +33,9 @@ def PSE_profesores_cursos(request):
 			ramos = map(upper,profe.ramos)
 	cursos=None
 
-	ramos_minuscula = request.GET.get('seleccion').lower()
+	ramos_minuscula=''
+	if  request.GET.get('seleccion'):
+		ramos_minuscula = request.GET.get('seleccion').lower()
 
 	if(ramos_minuscula):
 		if ramos_minuscula=='matematica':
