@@ -4,6 +4,7 @@ from django.template import loader
 from django.shortcuts import render
 from gestion.models import Estudiante, Cursos, Profesor
 from django.contrib.auth.decorators import login_required
+from django.core.files.storage import FileSystemStorage
 
 def upper(string):
 	return str(string).upper()
@@ -20,6 +21,12 @@ def PSE_profesores(request):
 
 @login_required
 def PSE_profesores_curso_calificaciones(request):
+	if request.method == 'POST' and request.FILES['notas']:
+		notas = request.FILES['notas']
+		fs = FileSystemStorage()
+		filename = fs.save(notas.name, notas)
+		uploaded_file_url = fs.url(filename)
+		return render(request, 'profesores/PSE_profesores_curso_calificaciones.html', {'uploaded_file_url': uploaded_file_url})
 	return render(request, "profesores/PSE_profesores_curso_calificaciones.html")
 
 @login_required
