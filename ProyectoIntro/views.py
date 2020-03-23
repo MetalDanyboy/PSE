@@ -79,7 +79,6 @@ def PSE_profesores_alumno_notas(request,alumno_id):
 	profe=request.user.profile
 	estudiante=Estudiante.objects.filter(id__icontains=alumno_id)
 	notas=Notas.objects.all()
-
 	return render(request, "profesores/PSE_profesores_alumno_notas.html",{"ramos":ramos,"assignments":assignments,"estudiante":estudiante,"notas":notas})
 
 @login_required

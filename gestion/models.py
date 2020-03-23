@@ -6,12 +6,12 @@ from django.contrib.auth.models import User
 RAMOS_COLEGIO = (('Matemáticas', 'Matemáticas'),
           ('Lenguaje', 'Lenguaje'),
           ('Historia', 'Historia'),
-          ('Ciencia', 'Ciencias'),
-          ('Ingles', 'Inglés'),
+          ('Ciencias', 'Ciencias'),
+          ('Inglés', 'Inglés'),
           ('Artes', 'Artes'),
           ('Taller', 'Taller'),
-          ('Musica', 'Música'),
-          ('Ed. Fisica', 'Ed. Física'))
+          ('Música', 'Música'),
+          ('Ed. Física', 'Ed. Física'))
 
 class Profesor(models.Model):
     nom_usuario=models.OneToOneField(User, default=1, related_name='profile', primary_key=True, on_delete=models.SET_DEFAULT)
@@ -104,6 +104,15 @@ class Notas(models.Model):
 
     def evaluacion(self):
         return ",".join([str(p) for p in self.assignment.all()])
+
+    def titulo_nota(self):
+        return (",".join([str(p) for p in self.assignment.all()])).split(' - ')[2]
+
+    def curso_nota(self):
+        return (",".join([str(p) for p in self.assignment.all()])).split(' - ')[1]
+
+    def ramo_nota(self):
+        return (",".join([str(p) for p in self.assignment.all()])).split(' - ')[0]
 
     def __str__(self):
         return self.estudiante.nombres+" "+self.estudiante.apellidos
