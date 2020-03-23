@@ -26,7 +26,7 @@
     </div>
 
     <div class="col-9 ml-sm-5 mt-3 mb-3 col-sm-6">
-        <a type="button" class="btn btn-primary btn-lg btn-block" href="{% url 'alumno_notas' %}">Ver Calificaciones</a>
+        <a type="button" class="btn btn-primary btn-lg btn-block" href="{% url 'alumno_notas' alumno_id=estudiante.0.id %}">Ver Calificaciones</a>
         <a type="button" class="btn btn-primary btn-lg btn-block" href="{% url 'alumno_info' user=estudiante.0.id %}">Ver Información Personal</a>
         <a type="button" class="btn btn-primary btn-lg btn-block" href="{% url 'alumno_progreso' %}">Ver Progreso</a>
     </div>

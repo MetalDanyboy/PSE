@@ -6,19 +6,17 @@ class ramos_admin(admin.ModelAdmin):
     list_display=("ramo",)
     search_fields=("ramo",)
 
-
 class notas_admin(admin.ModelAdmin):
-    list_display=("estudiante","assignment","nota")
-    search_fields=("estudiante","assignment","nota")
+    list_display=("estudiante","evaluacion","nota")
+    search_fields=("estudiante","evaluacion","nota")
 
 class assignment_admin(admin.ModelAdmin):
-    list_display=("titulo","profesor",)
-    search_fields=("estudiante","assignment","ramo")
+    list_display=("titulo","profesor","ramos","curso")
+    search_fields=("titulo","profesor__nombres","profesor__apellidos","ramos","curso__curso")
 
 class profesor_admin(admin.ModelAdmin):
     list_display=("nombres","apellidos","email","nom_usuario","ramos")
     search_fields=("nombres","apellidos","nom_usuario","ramos")
-
 
 class estudiante_admin(admin.ModelAdmin):
     list_display=("nombres","apellidos","curso")

@@ -3,15 +3,15 @@ from multiselectfield import MultiSelectField
 from django.contrib.auth.models import User
 # Create your models here.
 
-MY_CHOICES = (('Matemática', 'Matemática'),
+RAMOS_COLEGIO = (('Matemáticas', 'Matemáticas'),
           ('Lenguaje', 'Lenguaje'),
           ('Historia', 'Historia'),
-          ('Ciencia', 'Ciencia'),
-          ('Ingles', 'Ingles'),
+          ('Ciencia', 'Ciencias'),
+          ('Ingles', 'Inglés'),
           ('Artes', 'Artes'),
           ('Taller', 'Taller'),
-          ('Musica', 'Musica'),
-          ('Ed. Fisica', 'Ed. Fisica'))
+          ('Musica', 'Música'),
+          ('Ed. Fisica', 'Ed. Física'))
 
 class Profesor(models.Model):
     nom_usuario=models.OneToOneField(User, default=1, related_name='profile', primary_key=True, on_delete=models.SET_DEFAULT)
@@ -21,8 +21,11 @@ class Profesor(models.Model):
     email=models.EmailField()
     direccion=models.CharField(max_length=50)
     telefono=models.CharField(max_length=11)
-    ramos=MultiSelectField(choices=MY_CHOICES,default=MY_CHOICES[0][0])
+    ramos=MultiSelectField(choices=RAMOS_COLEGIO,default=RAMOS_COLEGIO[0][0])
     foto=models.ImageField(null=True,blank=True)
+
+    class Meta:
+        verbose_name_plural = "Profesores"
 
     def __str__(self):
         return "{} {}".format(self.nombres,self.apellidos)
@@ -67,32 +70,40 @@ class Cursos(models.Model):
     musica=models.CharField(max_length=50)
     ed_fisica=models.CharField(max_length=50)
 
+    class Meta:
+        verbose_name_plural = "Cursos"
+
     def __str__(self):
         return "{}".format(self.curso)
 
 class Ramos(models.Model):
     ramo = models.CharField(max_length=50)
 
+    class Meta:
+        verbose_name_plural = "Ramos"
+
     def __str__(self):
         return self.ramo
-
 
 class Assignment(models.Model):
     titulo = models.CharField(max_length=50)
     profesor = models.ForeignKey(Profesor, on_delete=models.CASCADE)
-    ramos=models.CharField(max_length=50,choices=MY_CHOICES,default=MY_CHOICES[0][0])
-
+    ramos = models.CharField(max_length=50, choices=RAMOS_COLEGIO, default=RAMOS_COLEGIO[0][0])
+    curso = models.ForeignKey(Cursos, on_delete=models.CASCADE, default=1)
 
     def __str__(self):
-        return self.ramo.ramo+"-"+self.titulo
-
-
+        return self.ramos+" - "+self.curso.curso+" - "+self.titulo
 
 class Notas(models.Model):
     estudiante = models.ForeignKey(Estudiante, on_delete=models.CASCADE)
-    assignment = models.OneToOneField(
-        Assignment,related_name='notas_tarea',on_delete=models.SET_NULL,null=True)
+    assignment = models.ManyToManyField(Assignment)
     nota = models.FloatField()
+
+    class Meta:
+        verbose_name_plural = "Notas"
+
+    def evaluacion(self):
+        return ",".join([str(p) for p in self.assignment.all()])
 
     def __str__(self):
         return self.estudiante.nombres+" "+self.estudiante.apellidos

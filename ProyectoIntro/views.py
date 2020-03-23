@@ -9,9 +9,6 @@ from django.core.files.storage import FileSystemStorage
 def upper(string):
 	return str(string).upper()
 
-"""def PSE_login(request):
-	return render(request, "PSE_login.html")""" #ESTO NO ERA NECESARIO
-
 def PSE_forgotpassword(request):
 	return render(request, "PSE_forgotpassword.html")
 
@@ -21,12 +18,6 @@ def PSE_profesores(request):
 
 @login_required
 def PSE_profesores_curso_calificaciones(request):
-	"""if request.method == 'POST' and request.FILES['notas']:
-		notas = request.FILES['notas']
-		fs = FileSystemStorage()
-		filename = fs.save(notas.name, notas)
-		uploaded_file_url = fs.url(filename)
-		return render(request, 'profesores/PSE_profesores_curso_calificaciones.html', {'uploaded_file_url': uploaded_file_url})"""
 	return render(request, "profesores/PSE_profesores_curso_calificaciones.html")
 
 @login_required
@@ -45,7 +36,7 @@ def PSE_profesores_cursos(request):
 		ramos_minuscula = request.GET.get('seleccion').lower()
 
 	if(ramos_minuscula):
-		if ramos_minuscula=='matematica':
+		if ramos_minuscula=='matemáticas':
 			cursos=Cursos.objects.filter(matematica__icontains=nombre_prof)
 		elif ramos_minuscula=='lenguaje':
 			cursos=Cursos.objects.filter(lenguaje__icontains=nombre_prof)
@@ -82,15 +73,14 @@ def PSE_profesores_alumno_info(request,user):
 	return render(request, "profesores/PSE_profesores_alumno_info.html",{"estudiante":estudiante})
 
 @login_required
-def PSE_profesores_alumno_notas(request):
+def PSE_profesores_alumno_notas(request,alumno_id):
 	ramos=Ramos.objects.all()
 	assignments=Assignment.objects.all()
 	profe=request.user.profile
+	estudiante=Estudiante.objects.filter(id__icontains=alumno_id)
+	notas=Notas.objects.all()
 
-	print(assignments[0].profesor)
-	print(ramos)
-
-	return render(request, "profesores/PSE_profesores_alumno_notas.html",{"ramos":ramos,"assignments":assignments})
+	return render(request, "profesores/PSE_profesores_alumno_notas.html",{"ramos":ramos,"assignments":assignments,"estudiante":estudiante,"notas":notas})
 
 @login_required
 def PSE_profesores_alumno_progreso(request):
