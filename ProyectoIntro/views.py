@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.template import Template, Context
 from django.template import loader
 from django.shortcuts import render
-from gestion.models import Estudiante, Cursos, Profesor
+from gestion.models import *
 from django.contrib.auth.decorators import login_required
 from django.core.files.storage import FileSystemStorage
 
@@ -21,12 +21,12 @@ def PSE_profesores(request):
 
 @login_required
 def PSE_profesores_curso_calificaciones(request):
-	if request.method == 'POST' and request.FILES['notas']:
+	"""if request.method == 'POST' and request.FILES['notas']:
 		notas = request.FILES['notas']
 		fs = FileSystemStorage()
 		filename = fs.save(notas.name, notas)
 		uploaded_file_url = fs.url(filename)
-		return render(request, 'profesores/PSE_profesores_curso_calificaciones.html', {'uploaded_file_url': uploaded_file_url})
+		return render(request, 'profesores/PSE_profesores_curso_calificaciones.html', {'uploaded_file_url': uploaded_file_url})"""
 	return render(request, "profesores/PSE_profesores_curso_calificaciones.html")
 
 @login_required
@@ -83,7 +83,14 @@ def PSE_profesores_alumno_info(request,user):
 
 @login_required
 def PSE_profesores_alumno_notas(request):
-	return render(request, "profesores/PSE_profesores_alumno_notas.html")
+	ramos=Ramos.objects.all()
+	assignments=Assignment.objects.all()
+	profe=request.user.profile
+
+	print(assignments[0].profesor)
+	print(ramos)
+
+	return render(request, "profesores/PSE_profesores_alumno_notas.html",{"ramos":ramos,"assignments":assignments})
 
 @login_required
 def PSE_profesores_alumno_progreso(request):

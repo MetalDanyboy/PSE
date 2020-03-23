@@ -3,17 +3,17 @@ from multiselectfield import MultiSelectField
 from django.contrib.auth.models import User
 # Create your models here.
 
-class Profesor(models.Model):
-    MY_CHOICES = (('matematica', 'Matematica'),
-              ('lenguaje', 'Lenguaje'),
-              ('historia', 'Historia'),
-              ('ciencia', 'Ciencia'),
-              ('ingles', 'Ingles'),
-              ('artes', 'Artes'),
-              ('taller', 'Taller'),
-              ('musica', 'Musica'),
-              ('ed_fisica', 'Ed. Fisica'))
+MY_CHOICES = (('Matemática', 'Matemática'),
+          ('Lenguaje', 'Lenguaje'),
+          ('Historia', 'Historia'),
+          ('Ciencia', 'Ciencia'),
+          ('Ingles', 'Ingles'),
+          ('Artes', 'Artes'),
+          ('Taller', 'Taller'),
+          ('Musica', 'Musica'),
+          ('Ed. Fisica', 'Ed. Fisica'))
 
+class Profesor(models.Model):
     nom_usuario=models.OneToOneField(User, default=1, related_name='profile', primary_key=True, on_delete=models.SET_DEFAULT)
     nombres=models.CharField(max_length=40)
     apellidos=models.CharField(max_length=40)
@@ -69,3 +69,30 @@ class Cursos(models.Model):
 
     def __str__(self):
         return "{}".format(self.curso)
+
+class Ramos(models.Model):
+    ramo = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.ramo
+
+
+class Assignment(models.Model):
+    titulo = models.CharField(max_length=50)
+    profesor = models.ForeignKey(Profesor, on_delete=models.CASCADE)
+    ramos=models.CharField(max_length=50,choices=MY_CHOICES,default=MY_CHOICES[0][0])
+
+
+    def __str__(self):
+        return self.ramo.ramo+"-"+self.titulo
+
+
+
+class Notas(models.Model):
+    estudiante = models.ForeignKey(Estudiante, on_delete=models.CASCADE)
+    assignment = models.OneToOneField(
+        Assignment,related_name='notas_tarea',on_delete=models.SET_NULL,null=True)
+    nota = models.FloatField()
+
+    def __str__(self):
+        return self.estudiante.nombres+" "+self.estudiante.apellidos

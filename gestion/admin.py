@@ -2,6 +2,18 @@ from django.contrib import admin
 from gestion.models import *
 # Register your models here.
 
+class ramos_admin(admin.ModelAdmin):
+    list_display=("ramo",)
+    search_fields=("ramo",)
+
+
+class notas_admin(admin.ModelAdmin):
+    list_display=("estudiante","assignment","nota")
+    search_fields=("estudiante","assignment","nota")
+
+class assignment_admin(admin.ModelAdmin):
+    list_display=("titulo","profesor",)
+    search_fields=("estudiante","assignment","ramo")
 
 class profesor_admin(admin.ModelAdmin):
     list_display=("nombres","apellidos","email","nom_usuario","ramos")
@@ -26,3 +38,6 @@ admin.site.register(Profesor, profesor_admin)
 admin.site.register(Estudiante, estudiante_admin)
 admin.site.register(Apoderado, apoderado_admin)
 admin.site.register(Cursos, cursos_admin)
+admin.site.register(Notas, notas_admin)
+admin.site.register(Assignment, assignment_admin)
+admin.site.register(Ramos, ramos_admin)
