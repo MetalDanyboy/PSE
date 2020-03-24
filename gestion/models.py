@@ -41,7 +41,7 @@ class Estudiante(models.Model):
     curso=models.CharField(max_length=2)
     apoderado=models.CharField(max_length=50)
     trastorno=models.CharField(max_length=100)
-    observaciones=models.CharField(max_length=500)
+    observacion=models.CharField(max_length=500)
     foto=models.ImageField(null=True,blank=True)
 
     def __str__(self):
@@ -116,3 +116,17 @@ class Notas(models.Model):
 
     def __str__(self):
         return self.estudiante.nombres+" "+self.estudiante.apellidos
+
+class Observaciones(models.Model):
+    alumno = models.ForeignKey(Estudiante, on_delete = models.SET_DEFAULT, default = 1)
+    profesor = models.ForeignKey(Profesor, on_delete = models.SET_DEFAULT, default = 1)
+    observacion = models.TextField()
+    fecha_observacion = models.DateField()
+    ramos = models.CharField(max_length=50, choices=RAMOS_COLEGIO, default=RAMOS_COLEGIO[0][0])
+
+    class Meta:
+        verbose_name_plural = "Observaciones"
+        
+
+    def __str__(self):
+        return self.alumno.nombres

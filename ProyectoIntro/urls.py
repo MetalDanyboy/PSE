@@ -35,7 +35,7 @@ urlpatterns = [
     path('profesores/alumno/<user>', PSE_profesores_alumno, name = "alumno"),
     path('profesores/alumno/<alumno_id>/notas/', PSE_profesores_alumno_notas, name = "alumno_notas"),
     path('profesores/alumno/info/<user>', PSE_profesores_alumno_info, name = "alumno_info"),
-    path('profesores/alumno/progreso/', PSE_profesores_alumno_progreso, name = "alumno_progreso"),
+    path('profesores/alumno/<alumno_id>/progreso/', PSE_profesores_alumno_progreso, name = "alumno_progreso"),
     path('profesores/perfil', PSE_profesores_perfil_profesor, name = "perfil_profesor"),
     path('profesores/obs_curso', PSE_obs_por_curso, name = "obs_por_curso")
 ]

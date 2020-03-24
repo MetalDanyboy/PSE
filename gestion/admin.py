@@ -32,6 +32,10 @@ class cursos_admin(admin.ModelAdmin):
     search_fields=("curso","matematica","lenguaje","historia","ciencia","ingles","artes","taller","musica","ed_fisica")
     list_filter=("curso",)
 
+class observaciones_admin(admin.ModelAdmin):
+    list_display=("alumno","profesor","observacion","fecha_observacion")
+    search_fields=("alumno","profesor","observacion","fecha_observacion")
+
 admin.site.register(Profesor, profesor_admin)
 admin.site.register(Estudiante, estudiante_admin)
 admin.site.register(Apoderado, apoderado_admin)
@@ -39,3 +43,4 @@ admin.site.register(Cursos, cursos_admin)
 admin.site.register(Notas, notas_admin)
 admin.site.register(Assignment, assignment_admin)
 admin.site.register(Ramos, ramos_admin)
+admin.site.register(Observaciones, observaciones_admin)

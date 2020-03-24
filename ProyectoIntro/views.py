@@ -26,6 +26,7 @@ def PSE_profesores_cursos(request):
 	nombre_prof=request.user.first_name+' '+request.user.last_name
 	profesores=Profesor.objects.all()
 	ramos=None
+	
 	for profe in profesores:
 		if profe.nombres+' '+profe.apellidos == nombre_prof:
 			ramos = map(upper,profe.ramos)
@@ -82,8 +83,10 @@ def PSE_profesores_alumno_notas(request,alumno_id):
 	return render(request, "profesores/PSE_profesores_alumno_notas.html",{"ramos":ramos,"assignments":assignments,"estudiante":estudiante,"notas":notas})
 
 @login_required
-def PSE_profesores_alumno_progreso(request):
-	return render(request, "profesores/PSE_profesores_alumno_progreso.html")
+def PSE_profesores_alumno_progreso(request,alumno_id):
+	estudiante=Estudiante.objects.filter(id__icontains=alumno_id)
+	obs_alumno=Observaciones.objects.all()
+	return render(request, "profesores/PSE_profesores_alumno_progreso.html",{"estudiante":estudiante,"obs_alumno":obs_alumno})
 
 @login_required
 def PSE_obs_por_curso(request):
