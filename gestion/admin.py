@@ -33,8 +33,8 @@ class cursos_admin(admin.ModelAdmin):
     list_filter=("curso",)
 
 class observaciones_admin(admin.ModelAdmin):
-    list_display=("alumno","profesor","observacion","fecha_observacion")
-    search_fields=("alumno","profesor","observacion","fecha_observacion")
+    list_display=("alumno","profesor","ramo","observacion","fecha_observacion")
+    search_fields=("alumno","profesor","ramo","observacion","fecha_observacion")
 
 admin.site.register(Profesor, profesor_admin)
 admin.site.register(Estudiante, estudiante_admin)

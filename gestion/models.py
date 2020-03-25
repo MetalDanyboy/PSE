@@ -1,6 +1,8 @@
 from django.db import models
+from datetime import datetime
 from multiselectfield import MultiSelectField
 from django.contrib.auth.models import User
+
 # Create your models here.
 
 RAMOS_COLEGIO = (('Matemáticas', 'Matemáticas'),
@@ -121,12 +123,12 @@ class Observaciones(models.Model):
     alumno = models.ForeignKey(Estudiante, on_delete = models.SET_DEFAULT, default = 1)
     profesor = models.ForeignKey(Profesor, on_delete = models.SET_DEFAULT, default = 1)
     observacion = models.TextField()
-    fecha_observacion = models.DateField()
-    ramos = models.CharField(max_length=50, choices=RAMOS_COLEGIO, default=RAMOS_COLEGIO[0][0])
+    fecha_observacion = models.DateField(default=datetime.now)
+    ramo = models.CharField(max_length=50, choices=RAMOS_COLEGIO, default=RAMOS_COLEGIO[0][0])
 
     class Meta:
         verbose_name_plural = "Observaciones"
-        
+
 
     def __str__(self):
         return self.alumno.nombres

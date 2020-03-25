@@ -3,8 +3,10 @@ from django.template import Template, Context
 from django.template import loader
 from django.shortcuts import render
 from gestion.models import *
+from gestion.forms import *
 from django.contrib.auth.decorators import login_required
 from django.core.files.storage import FileSystemStorage
+
 
 def upper(string):
 	return str(string).upper()
@@ -26,7 +28,7 @@ def PSE_profesores_cursos(request):
 	nombre_prof=request.user.first_name+' '+request.user.last_name
 	profesores=Profesor.objects.all()
 	ramos=None
-	
+
 	for profe in profesores:
 		if profe.nombres+' '+profe.apellidos == nombre_prof:
 			ramos = map(upper,profe.ramos)
@@ -43,17 +45,17 @@ def PSE_profesores_cursos(request):
 			cursos=Cursos.objects.filter(lenguaje__icontains=nombre_prof)
 		elif ramos_minuscula=='historia':
 			cursos=Cursos.objects.filter(historia__icontains=nombre_prof)
-		elif ramos_minuscula=='ciencia':
+		elif ramos_minuscula=='ciencias':
 			cursos=Cursos.objects.filter(ciencia__icontains=nombre_prof)
-		elif ramos_minuscula=='ingles':
+		elif ramos_minuscula=='inglés':
 			cursos=Cursos.objects.filter(ingles__icontains=nombre_prof)
 		elif ramos_minuscula=='artes':
 			cursos=Cursos.objects.filter(artes__icontains=nombre_prof)
 		elif ramos_minuscula=='taller':
 			cursos=Cursos.objects.filter(taller__icontains=nombre_prof)
-		elif ramos_minuscula=='musica':
+		elif ramos_minuscula=='música':
 			cursos=Cursos.objects.filter(musica__icontains=nombre_prof)
-		elif ramos_minuscula=='ed_fisica':
+		elif ramos_minuscula=='ed. física':
 			cursos=Cursos.objects.filter(ed_fisica__icontains=nombre_prof)
 
 	estudiantes=Estudiante.objects.filter()
@@ -90,7 +92,59 @@ def PSE_profesores_alumno_progreso(request,alumno_id):
 
 @login_required
 def PSE_obs_por_curso(request):
-	return render(request, "profesores/PSE_profesores_observaciones_por_curso.html")
+	cursos=Cursos.objects.all()
+	nombre_prof=request.user.first_name+" "+request.user.last_name
+
+	lista_cursos_profe=[]
+	for curso in cursos:
+		if curso.matematica == nombre_prof:
+			lista_cursos_profe.append(curso.curso)
+		elif curso.lenguaje == nombre_prof:
+			lista_cursos_profe.append(curso.curso)
+		elif curso.historia == nombre_prof:
+			lista_cursos_profe.append(curso.curso)
+		elif curso.ciencia == nombre_prof:
+			lista_cursos_profe.append(curso.curso)
+		elif curso.ingles == nombre_prof:
+			lista_cursos_profe.append(curso.curso)
+		elif curso.artes == nombre_prof:
+			lista_cursos_profe.append(curso.curso)
+		elif curso.taller == nombre_prof:
+			lista_cursos_profe.append(curso.curso)
+		elif curso.musica == nombre_prof:
+			lista_cursos_profe.append(curso.curso)
+		elif curso.ed_fisica == nombre_prof:
+			lista_cursos_profe.append(curso.curso)
+
+
+	curso_selected=""
+	if request.GET.get('seleccion_curso'):
+		curso_selected = request.GET.get('seleccion_curso')
+
+	alumnos=[]
+	if curso_selected:
+		alumnos=Estudiante.objects.filter(curso__icontains=curso_selected)
+
+	alumno_selected=""
+	if request.GET.get('seleccion_alumno'):
+		alumno_selected = request.GET.get('seleccion_alumno')
+		alumno_nom,alumno_apellido=alumno_selected.split()
+
+	form=ObservacionesForms(request.POST or None, )
+	if form.is_valid():
+
+		new_form=form.save(commit=False)
+		alumno_correcto=Estudiante.objects.filter(
+			nombres__icontains=alumno_nom,
+			apellidos__icontains=alumno_apellido)
+		new_form.alumno=alumno_correcto[0]
+		new_form.profesor=request.user.profile
+		new_form.save()
+		form.save_m2m()
+	print(request.user.id)
+	return render(request, "profesores/PSE_profesores_observaciones_por_curso.html",
+	{"cursos":lista_cursos_profe,"curso_selected":curso_selected,"alumnos":alumnos,
+	"alumno_selected":alumno_selected,"form":form})
 
 
 

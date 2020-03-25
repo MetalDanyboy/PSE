@@ -5,32 +5,63 @@
 
 {% block content %}
 
-<div class="container-fluid mt-3">
-	<div class="row">
-		<div class="col-sm-1">
-			Alumno(a):
-		</div>
-		<div class="col-sm">
-			<select class="custom-select">
-				<option selected>Seleccione un alumno(a)</option>
-				<option value="1">Juan Perez</option>
-				<option value="2">Mark Otto</option>
-				<option value="3">Jacob Thornton</option>
-			</select>
-		</div>
-	</div>
-	<div class="row mt-3">
-		<div class="col-sm">
-
-			<div class="form-group">
-				<label for="comment">Ingrese una observación:</label>
-				<textarea class="form-control" rows="5" id="comment"></textarea>
+<div class="container mt-3">
+	<div class="jumbotron">
+		<h4>Seleccione un curso y un(a) alumno(a) para agregar observacion</h4>
+		<hr class="my-4">
+		<div class="row">
+			<div class="col-sm">
+				<form action="#" method="get" id="curso">
+            <select onchange="this.form.submit()" name="seleccion_curso" class="custom-select" form="curso" value="1">
+							<option>Seleccione un curso</option>
+						{% for curso in cursos %}
+							{% if curso_selected == curso %}
+								<option selected value="{{curso}}" >{{curso}}</option>
+							{% else %}
+								<option value="{{curso}}" >{{curso}}</option>
+							{% endif %}
+						{% endfor %}
+					</select>
+				</form>
 			</div>
+		</div>
 
-			<button type="button" class="btn btn-primary float-right">Enviar</button>
+		<hr class="my-4">
+		<div class="row">
+			<div class="col-sm">
+				<form action="#" method="get" id="alumno">
+					<select onchange="this.form.submit()" name="seleccion_alumno" class="custom-select" form="alumno" value="2">
+						<option >Seleccione un alumno(a)</option>
+						{% for alumno in alumnos %}
+							{% if alumno == alumno_selected %}
+								<option selected value="{{alumno}}">{{alumno}}</option>
+							{% else %}
+								<option value="{{alumno}}">{{alumno}}</option>
+							{% endif %}
+						{% endfor %}
+					</select>
+				</form>
+			</div>
+		</div>
+		{% if alumno_selected %}
+		<hr class="my-4">
 
+	<p class="lead">Has seleccionado al alumno: {{alumno_selected}}</p>
+
+
+		<div class="row mt-3 mb-3">
+			<div class="col-sm">
+				<form method="POST">
+					{% csrf_token %}
+					{{ form.as_p }}
+					<input type="submit" class="btn btn-primary float-right" value="Guardar"/>
+				</form>
+			</div>
 		</div>
 	</div>
+	{% endif %}
+
 </div>
+
 
 {% endblock %}

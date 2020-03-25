@@ -26,9 +26,9 @@
         </tr>
       </thead>
       <tbody>
-      
+
       {% language 'es' %}
-      
+
         {% for obs in obs_alumno %}
 
           {% if obs.alumno.id == estudiante.0.id %}
@@ -39,7 +39,7 @@
                 <td>{{ obs.id }}</td>
                 <td>{{ obs.fecha_observacion }}</td>
                 <td>{{ obs.profesor }}</td>
-                <td>{{ obs.ramos }}</td>
+                <td>{{ obs.ramo }}</td>
                 <td>{{ obs.observacion }}</td>
               </tr>
 
