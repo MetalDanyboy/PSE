@@ -27,11 +27,14 @@
   </div>
 
   <div class="col-9 ml-sm-5 mt-3 mb-3 col-sm-6">
+    <div class="jumbotron">
+
+
     <form>
       <div class="form-group row">
         <label for="text" class="col-sm-2 col-form-label">Nombre:</label>
         <div class="col-sm-10">
-          <input type="text" readonly class="form-control" id="text" value="{{estudiante.0}}">
+          <input style="background-color: white" type="text" readonly class="form-control" id="text" value="{{estudiante.0}}" >
         </div>
       </div>
 
@@ -40,7 +43,7 @@
       <div class="form-group row">
         <label for="staticEmail" class="col-sm-2 col-form-label">Fecha Nacimiento:</label>
         <div class="col-sm-10">
-          <input type="text" readonly class="form-control" id="staticEmail" value="{{estudiante.0.fecha_nac}}">
+          <input style="background-color: white" type="text" readonly class="form-control" id="staticEmail" value="{{estudiante.0.fecha_nac}}">
         </div>
       </div>
       {% endlanguage %}
@@ -48,47 +51,48 @@
       <div class="form-group row">
         <label for="staticEmail" class="col-sm-2 col-form-label">Numero de Emergencia:</label>
         <div class="col-sm-10">
-          <input type="text" readonly class="form-control" id="staticEmail" value="{{estudiante.0.num_emergencia}}">
+          <input style="background-color: white" type="text" readonly class="form-control" id="staticEmail" value="{{estudiante.0.num_emergencia}}">
         </div>
       </div>
 
       <div class="form-group row">
         <label for="staticEmail" class="col-sm-2 col-form-label">Email de Contacto:</label>
         <div class="col-sm-10">
-          <input type="text" readonly class="form-control" id="staticEmail" value="{{estudiante.0.email_contacto}}">
+          <input style="background-color: white" type="text" readonly class="form-control" id="staticEmail" value="{{estudiante.0.email_contacto}}">
         </div>
       </div>
 
       <div class="form-group row">
         <label for="staticEmail" class="col-sm-2 col-form-label">Dirección:</label>
         <div class="col-sm-10">
-          <input type="text" readonly class="form-control" id="staticEmail" value="{{estudiante.0.direccion}}">
+          <input style="background-color: white" type="text" readonly class="form-control" id="staticEmail" value="{{estudiante.0.direccion}}">
         </div>
       </div>
 
       <div class="form-group row">
         <label for="staticEmail" class="col-sm-2 col-form-label">Apoderados:</label>
         <div class="col-sm-10">
-          <input type="text" readonly class="form-control" id="staticEmail" value="{{estudiante.0.apoderado}}">
+          <input style="background-color: white" type="text" readonly class="form-control" id="staticEmail" value="{{estudiante.0.apoderado}}">
         </div>
       </div>
 
       <div class="form-group row">
         <label for="staticEmail" class="col-sm-2 col-form-label">Trastornos:</label>
         <div class="col-sm-10">
-          <input type="text" readonly class="form-control" id="staticEmail" value="{{estudiante.0.trastorno}}">
+          <input style="background-color: white" type="text" readonly class="form-control" id="staticEmail" value="{{estudiante.0.trastorno}}">
         </div>
       </div>
 
       <fieldset disabled>
       <div class="form-group">
         <label for="exampleFormControlTextarea1">Observaciones:</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">
+        <textarea style="background-color: white" class="form-control" id="exampleFormControlTextarea1" rows="3">
           {{estudiante.0.observacion}}
         </textarea>
       </div>
       </fieldset>
     </form>
+    </div>
   </div>
 </div>
 

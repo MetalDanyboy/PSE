@@ -8,7 +8,7 @@
 
 <div class="container mt-3">
 	<div class="jumbotron">
-		<h4>Seleccione un curso y un(a) alumno(a) para agregar observacion</h4>
+		<h4>Seleccione un curso y un(a) alumno(a) para agregar Nota</h4>
 		<hr class="my-4">
 		<div class="row">
 			<div class="col-sm">
@@ -54,7 +54,7 @@
 			<div class="col-sm">
 				<form method="POST">
 					{% csrf_token %}
-					{{ form|crispy }}
+					{{ form|crispy}}
 					<input type="submit" class="btn btn-primary float-right" value="Guardar"/>
 				</form>
 			</div>
