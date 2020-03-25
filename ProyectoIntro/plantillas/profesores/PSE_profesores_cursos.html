@@ -48,7 +48,6 @@
               <thead>
                 <th class="th-sm">Id</th>
                 <th class="th-sm">Nombre</th>
-                <th class="th-sm">Apellido</th>
                 <th class="th-sm">Curso</th>
               </thead>
               <tbody>
@@ -56,8 +55,7 @@
                   {% if estudiante.curso == curso.curso %}
                     <tr style="transform: rotate(0);">
                       <th scope="row"><a href="{% url 'alumno' user=estudiante.id %}" class="stretched-link">{{estudiante.id}}</a></th>
-                      <td>{{estudiante.nombres}}</td>
-                      <td>{{estudiante.apellidos}}</td>
+                      <td>{{estudiante.nombre}}</td>
                       <td>{{estudiante.curso}}</td>
                     </tr>
                   {% endif %}

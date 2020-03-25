@@ -31,7 +31,7 @@ def PSE_profesores_cursos(request):
 	ramos=None
 
 	for profe in profesores:
-		if profe.nombres+' '+profe.apellidos == nombre_prof:
+		if profe.nombre == nombre_prof:
 			ramos = map(upper,profe.ramos)
 	cursos=None
 
@@ -131,15 +131,13 @@ def PSE_obs_por_curso(request):
 	alumno_selected=""
 	if request.GET.get('seleccion_alumno'):
 		alumno_selected = request.GET.get('seleccion_alumno')
-		alumno_nom,alumno_apellido=alumno_selected.split()
 
 	form=ObservacionesForms(request.POST or None, )
 	if form.is_valid():
 
 		new_form=form.save(commit=False)
 		alumno_correcto=Estudiante.objects.filter(
-			nombres__icontains=alumno_nom,
-			apellidos__icontains=alumno_apellido)
+			nombre__icontains=alumno_selected)
 		new_form.alumno=alumno_correcto[0]
 		new_form.profesor=request.user.profile
 		new_form.save()
@@ -227,14 +225,12 @@ def PSE_profesores_agregar_notas(request):
 	alumno_selected=""
 	if request.GET.get('seleccion_alumno'):
 		alumno_selected = request.GET.get('seleccion_alumno')
-		alumno_nom,alumno_apellido=alumno_selected.split()
 
 	form=NotaForms(request.POST or None, )
 	if form.is_valid():
 		new_form=form.save(commit=False)
 		alumno_correcto=Estudiante.objects.filter(
-			nombres__icontains=alumno_nom,
-			apellidos__icontains=alumno_apellido)
+			nombre__icontains=alumno_selected)
 		new_form.estudiante=alumno_correcto[0]
 		new_form.save()
 		form.save_m2m()

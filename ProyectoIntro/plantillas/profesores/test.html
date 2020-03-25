@@ -6,44 +6,25 @@
     </title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js%22%3E"></script>
 </head>
-<script>
-  $(document).ready(function()
-  {
-    $('tr').each(function()
-    {
-      var totnotas=0;
-      $(this).find('.subjects').each(function()
-      {
-        var notas=$(this).text();
-        if(notas.length!==0){
-          totnotas+=parseFloat(notas);
-        }
-      });
-      $(this).find('#prom').html('= '+totnotas);
-    });
-  });
-</script>
+
+
 <body>
-  <table class="table  table-striped table-light">
-    <thead>
-      <tr>
-        <th scope="col">Asignatura</th>
-          <th scope="col">lenguaje </th>
-          <th scope="col">mate </th>
-          <th scope="col">ingles</th>
-        <th scope="col">Promedio</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row"></th>
-          <td class="subjects" scope="col">1</td>
-          <td class="subjects" scope="col">21</td>
-          <td class="subjects" scope="col">13</td>
-          <td id="prom"> </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="card card-profile">
+    <div class="card-avatar">
+      <a href="#pablo">
+        <img class="img" src="https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTU0NjQzOTk4OTQ4OTkyMzQy/ansel-elgort-poses-for-a-portrait-during-the-baby-driver-premiere-2017-sxsw-conference-and-festivals-on-march-11-2017-in-austin-texas-photo-by-matt-winkelmeyer_getty-imagesfor-sxsw-square.jpg">
+      </a>
+    </div>
+    <div class="card-body ">
+        <h6 class="card-category text-gray">CEO / Co-Founder</h6>
+        <h4 class="card-title">Alec Thompson</h4>
+        <p class="card-description">
+            Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+        </p>
+        <a href="#pablo" class="btn btn-info btn-round">Follow</a>
+    </div>
+  </div>
 </body>
+
 
 </html>

@@ -17,8 +17,7 @@ RAMOS_COLEGIO = (('Matemáticas', 'Matemáticas'),
 
 class Profesor(models.Model):
     nom_usuario=models.OneToOneField(User, default=1, related_name='profile', primary_key=True, on_delete=models.SET_DEFAULT)
-    nombres=models.CharField(max_length=40)
-    apellidos=models.CharField(max_length=40)
+    nombre=models.CharField(max_length=200)
     fecha_nac=models.DateField(null=True,blank=True)
     email=models.EmailField()
     direccion=models.CharField(max_length=50)
@@ -30,12 +29,11 @@ class Profesor(models.Model):
         verbose_name_plural = "Profesores"
 
     def __str__(self):
-        return "{} {}".format(self.nombres,self.apellidos)
+        return self.nombre
 
 
 class Estudiante(models.Model):
-    nombres=models.CharField(max_length=40)
-    apellidos=models.CharField(max_length=40)
+    nombre=models.CharField(max_length=200)
     fecha_nac=models.DateField()
     email_contacto=models.EmailField()
     direccion=models.CharField(max_length=50)
@@ -47,18 +45,8 @@ class Estudiante(models.Model):
     foto=models.ImageField(null=True,blank=True)
 
     def __str__(self):
-        return "{} {}".format(self.nombres,self.apellidos)
+        return self.nombre
 
-class Apoderado(models.Model):
-    nombres=models.CharField(max_length=40)
-    apellidos=models.CharField(max_length=40)
-    email=models.EmailField()
-    direccion=models.CharField(max_length=50)
-    telefono=models.CharField(max_length=11)
-    pupilo=models.CharField(max_length=50)
-
-    def __str__(self):
-        return "{} {}".format(self.nombres,self.apellidos)
 
 class Cursos(models.Model):
     curso=models.CharField(max_length=2)

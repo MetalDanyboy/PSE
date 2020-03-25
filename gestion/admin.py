@@ -15,17 +15,13 @@ class assignment_admin(admin.ModelAdmin):
     search_fields=("titulo","profesor__nombres","profesor__apellidos","ramo","curso__curso")
 
 class profesor_admin(admin.ModelAdmin):
-    list_display=("nombres","apellidos","email","nom_usuario","ramos")
-    search_fields=("nombres","apellidos","nom_usuario","ramos")
+    list_display=("nombre","email","nom_usuario","ramos")
+    search_fields=("nombre","nom_usuario","ramos")
 
 class estudiante_admin(admin.ModelAdmin):
-    list_display=("nombres","apellidos","curso")
-    search_fields=("nombres","apellidos","curso")
+    list_display=("nombre","curso")
+    search_fields=("nombre","curso")
     list_filter=("curso",)
-
-class apoderado_admin(admin.ModelAdmin):
-    list_display=("nombres","apellidos","pupilo")
-    search_fields=("nombres","apellidos","pupilo")
 
 class cursos_admin(admin.ModelAdmin):
     list_display=("curso","matematica","lenguaje","historia","ciencia","ingles","artes","taller","musica","ed_fisica")
@@ -38,7 +34,6 @@ class observaciones_admin(admin.ModelAdmin):
 
 admin.site.register(Profesor, profesor_admin)
 admin.site.register(Estudiante, estudiante_admin)
-admin.site.register(Apoderado, apoderado_admin)
 admin.site.register(Cursos, cursos_admin)
 admin.site.register(Notas, notas_admin)
 admin.site.register(Assignment, assignment_admin)
