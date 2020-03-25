@@ -21,11 +21,14 @@
 
 
     <div class="col-9 ml-sm-5 mt-3 mb-3 col-sm-6">
+      <div class="jumbotron">
+
+        <h1>Datos Personales</h1>
       <form>
         <div class="form-group row">
           <label for="staticEmail" class="col-sm-2 col-form-label">Nombre:</label>
           <div class="col-sm-10">
-            <input type="text" readonly class="form-control" id="staticEmail" value="{{profesor}}">
+            <input style="background-color: white" type="text" readonly class="form-control" id="staticEmail" value="{{profesor}}">
           </div>
         </div>
 
@@ -33,7 +36,7 @@
         <div class="form-group row">
           <label for="staticEmail" class="col-sm-4 col-form-label">Fecha de Nacimiento:</label>
           <div class="col-sm-8">
-            <input type="text" readonly class="form-control" id="staticEmail" value="{{profesor.fecha_nac}}">
+            <input style="background-color: white" type="text" readonly class="form-control" id="staticEmail" value="{{profesor.fecha_nac}}">
           </div>
         </div>
         {% endlanguage %}
@@ -41,41 +44,13 @@
         <div class="form-group row">
           <label for="staticEmail" class="col-sm-3 col-form-label">Correo Electrónico:</label>
           <div class="col-sm-9">
-            <input type="text" readonly class="form-control" id="staticEmail" value="{{profesor.email}}">
+            <input style="background-color: white" type="text" readonly class="form-control" id="staticEmail" value="{{profesor.email}}">
           </div>
-        </div>
-
-        <div class="float-right">
-          <p><small> <a href="https://www.google.com">cambiar correo</a></small></p>
         </div>
       </form>
-      &nbsp;
-      <h3>Cambiar Contraseña</h3>
+      
+    </div>
 
-      <form>
-        <div class="form-group row">
-          <label for="staticPasswordOld" class="col-sm-4 col-form-label">Ingrese contraseña actual:</label>
-          <div class="col-sm-8">
-            <input type="text" class="form-control" id="staticPasswordOld">
-          </div>
-        </div>
-
-        <div class="form-group row">
-          <label for="staticPasswordNew_1" class="col-sm-4 col-form-label">Ingrese nueva contraseña:</label>
-          <div class="col-sm-8">
-            <input type="text" class="form-control" id="staticPasswordNew_1">
-         </div>
-        </div>
-
-        <div class="form-group row">
-         <label for="staticPasswordNew_2" class="col-sm-4 col-form-label">Re-ingrese nueva contraseña:</label>
-          <div class="col-sm-8">
-            <input type="text" class="form-control" id="staticPasswordNew_2">
-          </div>
-        </div>
-
-      </form>
-      <input class="btn btn-light" type="submit" value="Guardar">
     </div>
 
   </div>

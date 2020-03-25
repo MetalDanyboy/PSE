@@ -11,8 +11,8 @@ class notas_admin(admin.ModelAdmin):
     search_fields=("estudiante","evaluacion","nota")
 
 class assignment_admin(admin.ModelAdmin):
-    list_display=("titulo","profesor","ramos","curso")
-    search_fields=("titulo","profesor__nombres","profesor__apellidos","ramos","curso__curso")
+    list_display=("titulo","profesor","ramo","curso")
+    search_fields=("titulo","profesor__nombres","profesor__apellidos","ramo","curso__curso")
 
 class profesor_admin(admin.ModelAdmin):
     list_display=("nombres","apellidos","email","nom_usuario","ramos")

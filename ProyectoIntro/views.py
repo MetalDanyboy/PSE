@@ -1,11 +1,12 @@
 from django.http import HttpResponse
 from django.template import Template, Context
 from django.template import loader
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from gestion.models import *
 from gestion.forms import *
 from django.contrib.auth.decorators import login_required
 from django.core.files.storage import FileSystemStorage
+
 
 
 def upper(string):
@@ -82,7 +83,9 @@ def PSE_profesores_alumno_notas(request,alumno_id):
 	profe=request.user.profile
 	estudiante=Estudiante.objects.filter(id__icontains=alumno_id)
 	notas=Notas.objects.all()
-	return render(request, "profesores/PSE_profesores_alumno_notas.html",{"ramos":ramos,"assignments":assignments,"estudiante":estudiante,"notas":notas})
+
+	return render(request, "profesores/PSE_profesores_alumno_notas.html",{"ramos":ramos,
+	"assignments":assignments,"estudiante":estudiante,"notas":notas})
 
 @login_required
 def PSE_profesores_alumno_progreso(request,alumno_id):
@@ -141,13 +144,104 @@ def PSE_obs_por_curso(request):
 		new_form.profesor=request.user.profile
 		new_form.save()
 		form.save_m2m()
-	print(request.user.id)
+		return redirect('obs_por_curso',)
 	return render(request, "profesores/PSE_profesores_observaciones_por_curso.html",
 	{"cursos":lista_cursos_profe,"curso_selected":curso_selected,"alumnos":alumnos,
 	"alumno_selected":alumno_selected,"form":form})
 
+def PSE_profesores_agregar_evaluaciones(request):
+	cursos=Cursos.objects.all()
+	nombre_prof=request.user.first_name+" "+request.user.last_name
+
+	lista_cursos_profe=[]
+	for curso in cursos:
+		if curso.matematica == nombre_prof:
+			lista_cursos_profe.append(curso.curso)
+		elif curso.lenguaje == nombre_prof:
+			lista_cursos_profe.append(curso.curso)
+		elif curso.historia == nombre_prof:
+			lista_cursos_profe.append(curso.curso)
+		elif curso.ciencia == nombre_prof:
+			lista_cursos_profe.append(curso.curso)
+		elif curso.ingles == nombre_prof:
+			lista_cursos_profe.append(curso.curso)
+		elif curso.artes == nombre_prof:
+			lista_cursos_profe.append(curso.curso)
+		elif curso.taller == nombre_prof:
+			lista_cursos_profe.append(curso.curso)
+		elif curso.musica == nombre_prof:
+			lista_cursos_profe.append(curso.curso)
+		elif curso.ed_fisica == nombre_prof:
+			lista_cursos_profe.append(curso.curso)
+
+	curso_selected=""
+	if request.GET.get('seleccion_curso'):
+		curso_selected = request.GET.get('seleccion_curso')
+
+	form=AssignmentForms(request.POST or None, )
+	if form.is_valid():
+		new_form=form.save(commit=False)
+		curso_correcto=Cursos.objects.filter(curso__icontains=curso_selected)
+		new_form.curso=curso_correcto[0]
+		new_form.profesor=request.user.profile
+		new_form.save()
+		form.save_m2m()
+		return redirect('agregar_evaluaciones',)
+	return render(request,"profesores/PSE_profesores_agregar_evaluaciones.html",
+	{"cursos":lista_cursos_profe,"curso_selected":curso_selected,"form":form})
+
+def PSE_profesores_agregar_notas(request):
+	cursos=Cursos.objects.all()
+	nombre_prof=request.user.first_name+" "+request.user.last_name
+
+	lista_cursos_profe=[]
+	for curso in cursos:
+		if curso.matematica == nombre_prof:
+			lista_cursos_profe.append(curso.curso)
+		elif curso.lenguaje == nombre_prof:
+			lista_cursos_profe.append(curso.curso)
+		elif curso.historia == nombre_prof:
+			lista_cursos_profe.append(curso.curso)
+		elif curso.ciencia == nombre_prof:
+			lista_cursos_profe.append(curso.curso)
+		elif curso.ingles == nombre_prof:
+			lista_cursos_profe.append(curso.curso)
+		elif curso.artes == nombre_prof:
+			lista_cursos_profe.append(curso.curso)
+		elif curso.taller == nombre_prof:
+			lista_cursos_profe.append(curso.curso)
+		elif curso.musica == nombre_prof:
+			lista_cursos_profe.append(curso.curso)
+		elif curso.ed_fisica == nombre_prof:
+			lista_cursos_profe.append(curso.curso)
 
 
+	curso_selected=""
+	if request.GET.get('seleccion_curso'):
+		curso_selected = request.GET.get('seleccion_curso')
+
+	alumnos=[]
+	if curso_selected:
+		alumnos=Estudiante.objects.filter(curso__icontains=curso_selected)
+
+	alumno_selected=""
+	if request.GET.get('seleccion_alumno'):
+		alumno_selected = request.GET.get('seleccion_alumno')
+		alumno_nom,alumno_apellido=alumno_selected.split()
+
+	form=NotaForms(request.POST or None, )
+	if form.is_valid():
+		new_form=form.save(commit=False)
+		alumno_correcto=Estudiante.objects.filter(
+			nombres__icontains=alumno_nom,
+			apellidos__icontains=alumno_apellido)
+		new_form.estudiante=alumno_correcto[0]
+		new_form.save()
+		form.save_m2m()
+		return redirect('agregar_notas',)
+	return render(request,"profesores/PSE_profesores_agregar_notas.html",
+	{"cursos":lista_cursos_profe,"curso_selected":curso_selected,"alumnos":alumnos,
+	"alumno_selected":alumno_selected,"form":form})
 
 #-------------------Usar solo para Pruebas-------------------------
 

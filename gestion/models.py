@@ -90,11 +90,11 @@ class Ramos(models.Model):
 class Assignment(models.Model):
     titulo = models.CharField(max_length=50)
     profesor = models.ForeignKey(Profesor, on_delete=models.CASCADE)
-    ramos = models.CharField(max_length=50, choices=RAMOS_COLEGIO, default=RAMOS_COLEGIO[0][0])
+    ramo = models.CharField(max_length=50, choices=RAMOS_COLEGIO, default=RAMOS_COLEGIO[0][0])
     curso = models.ForeignKey(Cursos, on_delete=models.CASCADE, default=1)
 
     def __str__(self):
-        return self.ramos+" - "+self.curso.curso+" - "+self.titulo
+        return self.ramo+" - "+self.curso.curso+" - "+self.titulo
 
 class Notas(models.Model):
     estudiante = models.ForeignKey(Estudiante, on_delete=models.CASCADE)
