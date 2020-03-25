@@ -47,7 +47,7 @@
               <th scope="col">Asignatura</th>
               {% for entrada in assignments %}
                 {% if ramo.ramo == entrada.ramo %}
-                  {% if entrada.curso.curso == estudiante.0.curso %}
+                  {% if entrada.curso.curso == estudiante.0.curso.curso %}
                     <th scope="col">{{ entrada.titulo }} </th>
                   {% endif %}
                 {% endif %}
@@ -61,17 +61,18 @@
 
                     {% for nota in notas %}
 
+
                       {% if estudiante.0.id == nota.estudiante.id %}
 
                         {% for entrada in assignments %}
 
-                          {% if nota.curso_nota == entrada.curso.curso %}
+                          {% if nota.assignment.curso.curso == entrada.curso.curso %}
 
                             {% if ramo.ramo == entrada.ramo %}
 
-                              {% if nota.ramo_nota == entrada.ramo %}
+                              {% if nota.assignment.ramo == entrada.ramo %}
 
-                                {% if nota.titulo_nota == entrada.titulo %}
+                                {% if nota.assignment.titulo == entrada.titulo %}
 
                                     <td class="subjects">{{nota.nota}}</td>
 

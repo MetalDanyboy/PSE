@@ -4,13 +4,21 @@
         How to get selected value in dropdown
         list using JavaScript?
     </title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js%22%3E"></script>
 </head>
 
 
 <body>
+  <div class="col-md-4">
   <div class="card card-profile">
-    <div class="card-avatar">
+    <div class="card-header card-header-image">
       <a href="#pablo">
         <img class="img" src="https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTU0NjQzOTk4OTQ4OTkyMzQy/ansel-elgort-poses-for-a-portrait-during-the-baby-driver-premiere-2017-sxsw-conference-and-festivals-on-march-11-2017-in-austin-texas-photo-by-matt-winkelmeyer_getty-imagesfor-sxsw-square.jpg">
       </a>
@@ -21,10 +29,203 @@
         <p class="card-description">
             Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
         </p>
-        <a href="#pablo" class="btn btn-info btn-round">Follow</a>
     </div>
+  </div>
   </div>
 </body>
 
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
+<style media="screen">
 
+html *{
+  -webkit-font-smoothing: antialiased;
+}
+
+.h1, .h2, .h3, .h4, body, h1, h2, h3, h4, h5, h6 {
+  font-family: Roboto,Helvetica,Arial,sans-serif;
+  font-weight: 300;
+  line-height: 1.5em !important;
+}
+
+h3{
+  font-weight: 300!important;
+  font-size: 25px !important;
+}
+
+
+h4{
+  font-size: 18px !important;
+}
+
+h6{
+  font-size: 12px !important;
+  text-transform: uppercase;
+  font-weight: 500;
+
+}
+
+p {
+  font-size: 14px;
+  margin: 0 0 10px;
+  font-weight: 300;
+
+}
+
+.text-gray {
+  color: #999!important;
+}
+
+.card-title{
+  font-weight: 700 !important;
+  margin-top: 10px;
+  color: #3c4858;
+  font-family: Roboto Slab,Times New Roman,serif;
+}
+.card {
+  border: 0;
+  margin-bottom: 30px;
+  margin-top: 100px;
+  border-radius: 6px !important;
+  color: rgba(0,0,0,.87);
+  background: #fff;
+  width: 100%;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+}
+
+.card .card-body{
+  padding: .9375rem 1.875rem;
+}
+
+.card-description{
+  color: #999;
+}
+
+.card.card-profile{
+  text-align: center;
+}
+.card .card-header.card-header-image {
+  position: relative;
+  padding: 0;
+  z-index: 1;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-top: -30px;
+  border-radius: 6px;
+  max-height: 215px;
+}
+
+.card .card-header.card-header-image a {
+  display: block;
+}
+
+.card .card-header.card-header-image img {
+  width: 100%;
+  height: 215px;
+  border-radius: 6px;
+  pointer-events: none;
+  box-shadow: 0 5px 15px -8px rgba(0,0,0,.24), 0 8px 10px -5px rgba(0,0,0,.2);
+}
+
+.card .card-header.card-header-image .colored-shadow {
+  transform: scale(.94);
+  top: 12px;
+  filter: blur(12px);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  z-index: -1;
+  transition: opacity .45s;
+  opacity: 1;
+}
+
+.card .card-header.card-header-image .card-title {
+  position: absolute;
+  bottom: 5px;
+  left: 15px;
+  color: #fff;
+  font-size: 1.125rem;
+  text-shadow: 0 2px 5px rgba(33,33,33,.5);
+  font-weight: 700;
+  font-family: 'Roboto Slab';
+}
+
+.card .card-category {
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.card .card-body+.card-footer {
+  padding-top: 0;
+  border: 0;
+  border-radius: 6px;
+}
+
+.card .card-footer {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: 0;
+}
+
+.card-profile .card-footer .btn.btn-just-icon{
+  font-size: 20px;
+  padding: 12px 13px;
+  line-height: 1em;
+}
+
+.card .card-footer {
+  padding: .9375rem 1.875rem;
+}
+
+
+.card-profile .card-body+.card-footer{
+  margin-top: -15px;
+}
+.card .text-info {
+  color: #00bcd4!important;
+}
+
+.card-profile .card-avatar {
+  width: 130px;
+  max-width: 130px;
+  max-height: 130px;
+  margin: -50px auto 0;
+  border-radius: 50%;
+  overflow: hidden;
+  padding: 0;
+  box-shadow: 0 16px 38px -12px rgba(0,0,0,.56), 0 4px 25px 0 rgba(0,0,0,.12), 0 8px 10px -5px rgba(0,0,0,.2);
+}
+
+.card-profile .card-avatar img{
+  width: 100%;
+}
+.card-profile .card-avatar+.card-body{
+  margin-top: 15px;
+}
+
+footer{
+  margin-top:100px;
+  color: #555;
+  background: #fff;
+  padding: 25px;
+  font-weight: 300;
+
+}
+.footer p{
+  margin-bottom: 0;
+}
+footer p a{
+  color: #555;
+  font-weight: 400;
+}
+
+footer p a:hover{
+  color: #9f26aa;
+  text-decoration: none;
+}
+
+</style>
 </html>

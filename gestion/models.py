@@ -31,34 +31,17 @@ class Profesor(models.Model):
     def __str__(self):
         return self.nombre
 
-
-class Estudiante(models.Model):
-    nombre=models.CharField(max_length=200)
-    fecha_nac=models.DateField()
-    email_contacto=models.EmailField()
-    direccion=models.CharField(max_length=50)
-    num_emergencia=models.CharField(max_length=11)
-    curso=models.CharField(max_length=2)
-    apoderado=models.CharField(max_length=50)
-    trastorno=models.CharField(max_length=100)
-    observacion=models.CharField(max_length=500)
-    foto=models.ImageField(null=True,blank=True)
-
-    def __str__(self):
-        return self.nombre
-
-
 class Cursos(models.Model):
     curso=models.CharField(max_length=2)
-    matematica=models.CharField(max_length=50)
-    lenguaje=models.CharField(max_length=50)
-    historia=models.CharField(max_length=50)
-    ciencia=models.CharField(max_length=50)
-    ingles=models.CharField(max_length=50)
-    artes=models.CharField(max_length=50)
-    taller=models.CharField(max_length=50)
-    musica=models.CharField(max_length=50)
-    ed_fisica=models.CharField(max_length=50)
+    matematica=models.ForeignKey(Profesor,related_name="matematica",on_delete = models.SET_DEFAULT, default = 1)
+    lenguaje=models.ForeignKey(Profesor,related_name="lenguaje",on_delete = models.SET_DEFAULT, default = 1)
+    historia=models.ForeignKey(Profesor,related_name="historia",on_delete = models.SET_DEFAULT, default = 1)
+    ciencia=models.ForeignKey(Profesor,related_name="ciencia",on_delete = models.SET_DEFAULT, default = 1)
+    ingles=models.ForeignKey(Profesor,related_name="ingles",on_delete = models.SET_DEFAULT, default = 1)
+    artes=models.ForeignKey(Profesor,related_name="artes",on_delete = models.SET_DEFAULT, default = 1)
+    taller=models.ForeignKey(Profesor,related_name="taller",on_delete = models.SET_DEFAULT, default = 1)
+    musica=models.ForeignKey(Profesor,related_name="musica",on_delete = models.SET_DEFAULT, default = 1)
+    ed_fisica=models.ForeignKey(Profesor,related_name="ed_fisica",on_delete = models.SET_DEFAULT, default = 1)
 
     class Meta:
         verbose_name_plural = "Cursos"
@@ -66,8 +49,23 @@ class Cursos(models.Model):
     def __str__(self):
         return "{}".format(self.curso)
 
+class Estudiante(models.Model):
+    nombre=models.CharField(max_length=200)
+    fecha_nac=models.DateField()
+    email_contacto=models.EmailField()
+    direccion=models.CharField(max_length=50)
+    num_emergencia=models.CharField(max_length=11)
+    curso=models.ForeignKey(Cursos,on_delete = models.SET_DEFAULT, default = 1)
+    apoderado=models.CharField(max_length=50)
+    trastorno=models.CharField(max_length=100)
+    observacion=models.TextField(max_length=500,blank=True)
+    foto=models.ImageField(null=True,blank=True)
+
+    def __str__(self):
+        return self.nombre
+
 class Ramos(models.Model):
-    ramo = models.CharField(max_length=50)
+    ramo = models.CharField(max_length=50,choices=RAMOS_COLEGIO, default=RAMOS_COLEGIO[0][0])
 
     class Meta:
         verbose_name_plural = "Ramos"
@@ -76,7 +74,7 @@ class Ramos(models.Model):
         return self.ramo
 
 class Assignment(models.Model):
-    titulo = models.CharField(max_length=50)
+    titulo = models.CharField(max_length=4)
     profesor = models.ForeignKey(Profesor, on_delete=models.CASCADE)
     ramo = models.CharField(max_length=50, choices=RAMOS_COLEGIO, default=RAMOS_COLEGIO[0][0])
     curso = models.ForeignKey(Cursos, on_delete=models.CASCADE, default=1)
@@ -86,26 +84,14 @@ class Assignment(models.Model):
 
 class Notas(models.Model):
     estudiante = models.ForeignKey(Estudiante, on_delete=models.CASCADE)
-    assignment = models.ManyToManyField(Assignment)
+    assignment = models.ForeignKey(Assignment,on_delete=models.CASCADE)
     nota = models.FloatField()
 
     class Meta:
         verbose_name_plural = "Notas"
 
-    def evaluacion(self):
-        return ",".join([str(p) for p in self.assignment.all()])
-
-    def titulo_nota(self):
-        return (",".join([str(p) for p in self.assignment.all()])).split(' - ')[2]
-
-    def curso_nota(self):
-        return (",".join([str(p) for p in self.assignment.all()])).split(' - ')[1]
-
-    def ramo_nota(self):
-        return (",".join([str(p) for p in self.assignment.all()])).split(' - ')[0]
-
     def __str__(self):
-        return self.estudiante.nombres+" "+self.estudiante.apellidos
+        return self.estudiante.nombre
 
 class Observaciones(models.Model):
     alumno = models.ForeignKey(Estudiante, on_delete = models.SET_DEFAULT, default = 1)

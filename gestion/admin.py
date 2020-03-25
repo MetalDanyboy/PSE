@@ -7,8 +7,8 @@ class ramos_admin(admin.ModelAdmin):
     search_fields=("ramo",)
 
 class notas_admin(admin.ModelAdmin):
-    list_display=("estudiante","evaluacion","nota")
-    search_fields=("estudiante","evaluacion","nota")
+    list_display=("estudiante","assignment","nota")
+    search_fields=("estudiante","assignment","nota")
 
 class assignment_admin(admin.ModelAdmin):
     list_display=("titulo","profesor","ramo","curso")

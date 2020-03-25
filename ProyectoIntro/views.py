@@ -25,42 +25,38 @@ def PSE_profesores_curso_calificaciones(request):
 
 @login_required
 def PSE_profesores_cursos(request):
+	profesor=request.user.profile
 
-	nombre_prof=request.user.first_name+' '+request.user.last_name
-	profesores=Profesor.objects.all()
-	ramos=None
+	ramos = map(upper,profesor.ramos)
 
-	for profe in profesores:
-		if profe.nombre == nombre_prof:
-			ramos = map(upper,profe.ramos)
 	cursos=None
-
 	ramos_minuscula=''
 	if  request.GET.get('seleccion'):
 		ramos_minuscula = request.GET.get('seleccion').lower()
 
 	if(ramos_minuscula):
 		if ramos_minuscula=='matemáticas':
-			cursos=Cursos.objects.filter(matematica__icontains=nombre_prof)
+			cursos=Cursos.objects.filter(matematica__nombre__icontains=profesor.nombre)
 		elif ramos_minuscula=='lenguaje':
-			cursos=Cursos.objects.filter(lenguaje__icontains=nombre_prof)
+			cursos=Cursos.objects.filter(lenguaje__nombre__icontains=profesor.nombre)
 		elif ramos_minuscula=='historia':
-			cursos=Cursos.objects.filter(historia__icontains=nombre_prof)
+			cursos=Cursos.objects.filter(historia__nombre__icontains=profesor.nombre)
 		elif ramos_minuscula=='ciencias':
-			cursos=Cursos.objects.filter(ciencia__icontains=nombre_prof)
+			cursos=Cursos.objects.filter(ciencia__nombre__icontains=profesor.nombre)
 		elif ramos_minuscula=='inglés':
-			cursos=Cursos.objects.filter(ingles__icontains=nombre_prof)
+			cursos=Cursos.objects.filter(ingles__nombre__icontains=profesor.nombre)
 		elif ramos_minuscula=='artes':
-			cursos=Cursos.objects.filter(artes__icontains=nombre_prof)
+			cursos=Cursos.objects.filter(artes__nombre__icontains=profesor.nombre)
 		elif ramos_minuscula=='taller':
-			cursos=Cursos.objects.filter(taller__icontains=nombre_prof)
+			cursos=Cursos.objects.filter(taller__nombre__icontains=profesor.nombre)
 		elif ramos_minuscula=='música':
-			cursos=Cursos.objects.filter(musica__icontains=nombre_prof)
+			cursos=Cursos.objects.filter(musica__nombre__icontains=profesor.nombre)
 		elif ramos_minuscula=='ed. física':
-			cursos=Cursos.objects.filter(ed_fisica__icontains=nombre_prof)
+			cursos=Cursos.objects.filter(ed_fisica__nombre__icontains=profesor.nombre)
 
-	estudiantes=Estudiante.objects.filter()
-	return render(request, "profesores/PSE_profesores_cursos.html",{"estudiantes":estudiantes,"cursos":cursos,"ramos":ramos})
+	estudiantes=Estudiante.objects.all()
+	return render(request, "profesores/PSE_profesores_cursos.html",
+	{"estudiantes":estudiantes,"cursos":cursos,"ramos":ramos})
 
 @login_required
 def PSE_profesores_perfil_profesor(request):
@@ -96,27 +92,27 @@ def PSE_profesores_alumno_progreso(request,alumno_id):
 @login_required
 def PSE_obs_por_curso(request):
 	cursos=Cursos.objects.all()
-	nombre_prof=request.user.first_name+" "+request.user.last_name
+	nombre_prof=request.user.profile.nombre
 
 	lista_cursos_profe=[]
 	for curso in cursos:
-		if curso.matematica == nombre_prof:
+		if curso.matematica.nombre == nombre_prof:
 			lista_cursos_profe.append(curso.curso)
-		elif curso.lenguaje == nombre_prof:
+		elif curso.lenguaje.nombre == nombre_prof:
 			lista_cursos_profe.append(curso.curso)
-		elif curso.historia == nombre_prof:
+		elif curso.historia.nombre == nombre_prof:
 			lista_cursos_profe.append(curso.curso)
-		elif curso.ciencia == nombre_prof:
+		elif curso.ciencia.nombre == nombre_prof:
 			lista_cursos_profe.append(curso.curso)
-		elif curso.ingles == nombre_prof:
+		elif curso.ingles.nombre == nombre_prof:
 			lista_cursos_profe.append(curso.curso)
-		elif curso.artes == nombre_prof:
+		elif curso.artes.nombre == nombre_prof:
 			lista_cursos_profe.append(curso.curso)
-		elif curso.taller == nombre_prof:
+		elif curso.taller.nombre == nombre_prof:
 			lista_cursos_profe.append(curso.curso)
-		elif curso.musica == nombre_prof:
+		elif curso.musica.nombre == nombre_prof:
 			lista_cursos_profe.append(curso.curso)
-		elif curso.ed_fisica == nombre_prof:
+		elif curso.ed_fisica.nombre == nombre_prof:
 			lista_cursos_profe.append(curso.curso)
 
 
@@ -126,7 +122,7 @@ def PSE_obs_por_curso(request):
 
 	alumnos=[]
 	if curso_selected:
-		alumnos=Estudiante.objects.filter(curso__icontains=curso_selected)
+		alumnos=Estudiante.objects.filter(curso__curso__icontains=curso_selected)
 
 	alumno_selected=""
 	if request.GET.get('seleccion_alumno'):
@@ -149,27 +145,27 @@ def PSE_obs_por_curso(request):
 
 def PSE_profesores_agregar_evaluaciones(request):
 	cursos=Cursos.objects.all()
-	nombre_prof=request.user.first_name+" "+request.user.last_name
+	nombre_prof=request.user.profile.nombre
 
 	lista_cursos_profe=[]
 	for curso in cursos:
-		if curso.matematica == nombre_prof:
+		if curso.matematica.nombre == nombre_prof:
 			lista_cursos_profe.append(curso.curso)
-		elif curso.lenguaje == nombre_prof:
+		elif curso.lenguaje.nombre == nombre_prof:
 			lista_cursos_profe.append(curso.curso)
-		elif curso.historia == nombre_prof:
+		elif curso.historia.nombre == nombre_prof:
 			lista_cursos_profe.append(curso.curso)
-		elif curso.ciencia == nombre_prof:
+		elif curso.ciencia.nombre == nombre_prof:
 			lista_cursos_profe.append(curso.curso)
-		elif curso.ingles == nombre_prof:
+		elif curso.ingles.nombre == nombre_prof:
 			lista_cursos_profe.append(curso.curso)
-		elif curso.artes == nombre_prof:
+		elif curso.artes.nombre == nombre_prof:
 			lista_cursos_profe.append(curso.curso)
-		elif curso.taller == nombre_prof:
+		elif curso.taller.nombre == nombre_prof:
 			lista_cursos_profe.append(curso.curso)
-		elif curso.musica == nombre_prof:
+		elif curso.musica.nombre == nombre_prof:
 			lista_cursos_profe.append(curso.curso)
-		elif curso.ed_fisica == nombre_prof:
+		elif curso.ed_fisica.nombre == nombre_prof:
 			lista_cursos_profe.append(curso.curso)
 
 	curso_selected=""
@@ -190,27 +186,27 @@ def PSE_profesores_agregar_evaluaciones(request):
 
 def PSE_profesores_agregar_notas(request):
 	cursos=Cursos.objects.all()
-	nombre_prof=request.user.first_name+" "+request.user.last_name
+	nombre_prof=request.user.profile.nombre
 
 	lista_cursos_profe=[]
 	for curso in cursos:
-		if curso.matematica == nombre_prof:
+		if curso.matematica.nombre == nombre_prof:
 			lista_cursos_profe.append(curso.curso)
-		elif curso.lenguaje == nombre_prof:
+		elif curso.lenguaje.nombre == nombre_prof:
 			lista_cursos_profe.append(curso.curso)
-		elif curso.historia == nombre_prof:
+		elif curso.historia.nombre == nombre_prof:
 			lista_cursos_profe.append(curso.curso)
-		elif curso.ciencia == nombre_prof:
+		elif curso.ciencia.nombre == nombre_prof:
 			lista_cursos_profe.append(curso.curso)
-		elif curso.ingles == nombre_prof:
+		elif curso.ingles.nombre == nombre_prof:
 			lista_cursos_profe.append(curso.curso)
-		elif curso.artes == nombre_prof:
+		elif curso.artes.nombre == nombre_prof:
 			lista_cursos_profe.append(curso.curso)
-		elif curso.taller == nombre_prof:
+		elif curso.taller.nombre == nombre_prof:
 			lista_cursos_profe.append(curso.curso)
-		elif curso.musica == nombre_prof:
+		elif curso.musica.nombre == nombre_prof:
 			lista_cursos_profe.append(curso.curso)
-		elif curso.ed_fisica == nombre_prof:
+		elif curso.ed_fisica.nombre == nombre_prof:
 			lista_cursos_profe.append(curso.curso)
 
 
@@ -220,7 +216,7 @@ def PSE_profesores_agregar_notas(request):
 
 	alumnos=[]
 	if curso_selected:
-		alumnos=Estudiante.objects.filter(curso__icontains=curso_selected)
+		alumnos=Estudiante.objects.filter(curso__curso__icontains=curso_selected)
 
 	alumno_selected=""
 	if request.GET.get('seleccion_alumno'):
@@ -243,37 +239,4 @@ def PSE_profesores_agregar_notas(request):
 
 
 def PSE_test(request):
-	nombre_prof=request.user.first_name+' '+request.user.last_name
-	profesores=Profesor.objects.all()
-	ramos=None
-	for profe in profesores:
-		if profe.nombres+' '+profe.apellidos == nombre_prof:
-			ramos = map(upper,profe.ramos)
-	cursos=None
-
-	ramos_minuscula=''
-	if  request.GET.get('seleccion'):
-		ramos_minuscula = request.GET.get('seleccion').lower()
-
-	if(ramos_minuscula):
-		if ramos_minuscula=='matematica':
-			cursos=Cursos.objects.filter(matematica__icontains=nombre_prof)
-		elif ramos_minuscula=='lenguaje':
-			cursos=Cursos.objects.filter(lenguaje__icontains=nombre_prof)
-		elif ramos_minuscula=='historia':
-			cursos=Cursos.objects.filter(historia__icontains=nombre_prof)
-		elif ramos_minuscula=='ciencia':
-			cursos=Cursos.objects.filter(ciencia__icontains=nombre_prof)
-		elif ramos_minuscula=='ingles':
-			cursos=Cursos.objects.filter(ingles__icontains=nombre_prof)
-		elif ramos_minuscula=='artes':
-			cursos=Cursos.objects.filter(artes__icontains=nombre_prof)
-		elif ramos_minuscula=='taller':
-			cursos=Cursos.objects.filter(taller__icontains=nombre_prof)
-		elif ramos_minuscula=='musica':
-			cursos=Cursos.objects.filter(musica__icontains=nombre_prof)
-		elif ramos_minuscula=='ed_fisica':
-			cursos=Cursos.objects.filter(ed_fisica__icontains=nombre_prof)
-
-	estudiantes=Estudiante.objects.filter()
-	return render(request, "profesores/test.html",{"estudiantes":estudiantes,"cursos":cursos,"ramos":ramos})
+	return render(request, "profesores/test.html")
