@@ -31,15 +31,15 @@ urlpatterns = [
     path('profesores/',PSE_profesores, name = "profesores"),
     path('forgotpassword/', PSE_forgotpassword, name = "forgotpassword"),
     path('profesores/cursos/', PSE_profesores_cursos, name = "cursos"),
-    path('profesores/cursos/calificaciones',PSE_profesores_curso_calificaciones, name = "curso_calificaciones"),
+    path('profesores/cursos/calificaciones/',PSE_profesores_curso_calificaciones, name = "curso_calificaciones"),
     path('profesores/alumno/<user>', PSE_profesores_alumno, name = "alumno"),
     path('profesores/alumno/<alumno_id>/notas/', PSE_profesores_alumno_notas, name = "alumno_notas"),
     path('profesores/alumno/info/<user>', PSE_profesores_alumno_info, name = "alumno_info"),
     path('profesores/alumno/<alumno_id>/progreso/', PSE_profesores_alumno_progreso, name = "alumno_progreso"),
-    path('profesores/perfil', PSE_profesores_perfil_profesor, name = "perfil_profesor"),
-    path('profesores/obs_curso', PSE_obs_por_curso, name = "obs_por_curso"),
-    path('profesores/agregar_evaluaciones',PSE_profesores_agregar_evaluaciones,name="agregar_evaluaciones"),
-    path('profesores/agregar_notas',PSE_profesores_agregar_notas,name="agregar_notas")
+    path('profesores/perfil/', PSE_profesores_perfil_profesor, name = "perfil_profesor"),
+    path('profesores/obs_por_curso/', PSE_obs_por_curso, name = "obs_por_curso"),
+    path('profesores/agregar_evaluaciones/',PSE_profesores_agregar_evaluaciones,name="agregar_evaluaciones"),
+    path('profesores/agregar_notas/',PSE_profesores_agregar_notas,name="agregar_notas")
 ]
 
 if settings.DEBUG:

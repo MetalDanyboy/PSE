@@ -103,6 +103,5 @@ class Observaciones(models.Model):
     class Meta:
         verbose_name_plural = "Observaciones"
 
-
     def __str__(self):
-        return self.alumno.nombres
+        return self.alumno.nombre

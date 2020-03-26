@@ -6,10 +6,3 @@ body {
 #al_lado_del_logo{
 	line-height:0px !important;
 }
-input:-moz-read-only { /* For Firefox */
-  background-color: yellow;
-}
-
-input:read-only {
-  background-color: white;
-}
