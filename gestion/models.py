@@ -1,6 +1,6 @@
 from django.db import models
 from datetime import datetime
-from multiselectfield import MultiSelectField
+#from multiselectfield import MultiSelectField
 from django.contrib.auth.models import User
 
 # Create your models here.
